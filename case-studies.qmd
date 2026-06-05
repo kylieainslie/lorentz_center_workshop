@@ -1,0 +1,99 @@
+---
+title: "Case Studies"
+subtitle: "Simulated epidemic data for cross-disciplinary analysis"
+---
+
+## Overview
+
+The workshop is structured around two case studies derived from a single simulated population-wide outbreak. The underlying data generation mechanism is broadly inspired by the SARS-CoV-2 pandemic and uses a structured compartmental SEIRD (Susceptible–Exposed–Infected–Recovered–Dead) model.
+
+::: {.callout-important}
+Participants do **not** see the underlying complete individual-level dataset until the very end of the workshop. The two case study datasets are extracts designed to mimic realistic data availability settings.
+:::
+
+---
+
+## Underlying Data Generation
+
+**Population:** 1,000,000 individuals in a closed, structured population with within-cluster and between-cluster infection dynamics.
+
+**Model:** Compartmental SEIRD with:
+
+- Heterogeneity in susceptibility to infection
+- Heterogeneity in infectiousness upon infection
+- A temporary **intervention period** that reduces the transmission rate and effective reproduction number (R~eff~)
+- A **vaccination campaign** that begins at a later calendar time point, with effectiveness depending on individual characteristics and time since vaccination
+
+**Individual-level variables** (complete dataset, not shared until Day 5):
+
+- Infection status (yes/no)
+- Time of infection (if infected)
+- Time of vaccination (if vaccinated)
+- Clinical events: hospitalization, discharge, death
+
+---
+
+## Case Study A — Natural Course of the Epidemic
+
+**Focus period:** Before vaccination becomes available.
+
+**Available data:** Daily aggregate counts of:
+
+- New infections (subject to reporting delays and underreporting)
+- Hospitalizations
+- Deaths (including cause of death)
+
+**Analytical aims:**
+
+- Estimate the **reproduction number** (R~0~ and R~eff~) over time
+- Estimate the **effect of intervention measures** on transmission
+- **Predict the future course** of the epidemic under different scenarios
+- Estimate **excess mortality** attributable to the outbreak
+- Handle **incomplete data** — censoring, reporting delays, and underreporting
+
+**Relevant methods:**
+
+| Survival Analysis | Infectious Disease Modeling |
+|---|---|
+| Competing risks (infection, death) | Compartmental SIR/SEIRD models |
+| Multi-state models (S → E → I → R/D) | Renewal equation estimation of R~eff~ |
+| Additive hazard models | Back-calculation methods |
+| Censoring adjustment | Nowcasting with reporting delay correction |
+
+---
+
+## Case Study B — Vaccine Efficacy
+
+**Focus period:** After vaccination becomes available.
+
+**Available data:** Daily aggregate counts (vaccination period only) of:
+
+- New infections, hospitalizations, deaths
+- Vaccinations (including vaccine uptake aggregated over population subgroups)
+
+**Analytical aims:**
+
+- Estimate **vaccine efficacy** (VE) against infection, hospitalization, and death
+- Understand **time-dependent vaccine effectiveness** (waning immunity)
+- Characterize **heterogeneity** in vaccine uptake and efficacy across subgroups
+- Account for confounding by indication and time-varying exposures
+
+**Relevant methods:**
+
+| Survival Analysis | Infectious Disease Modeling |
+|---|---|
+| Frailty models (shared/individual-level heterogeneity) | Vaccine efficacy estimation from surveillance data |
+| Time-varying covariate models | Cohort and case-control study designs |
+| Multi-state models (unvaccinated → vaccinated → outcomes) | Mechanistic models of waning immunity |
+| Competing risks (multiple clinical outcomes) | Indirect effects and herd immunity adjustment |
+
+---
+
+## Working Groups
+
+Participants are divided into **four mixed-discipline groups** (two per case study), intentionally composed across:
+
+- SA and IDM expertise
+- Career stage (early-career and established researchers)
+
+Each pair of groups working on the same case study meets on Day 2 for cross-group discussion before refining their analyses independently. All groups share findings in the daily plenary sessions.

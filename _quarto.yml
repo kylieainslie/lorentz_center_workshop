@@ -1,0 +1,71 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Connecting Survival Analysis and Infectious Disease Modeling"
+  description: "Lorentz Center Workshop | 15–19 June 2026 | Leiden, the Netherlands"
+  favicon: images/favicon.ico
+  repo-url: https://github.com/kylieainslie/lorentz_center_workshop
+  repo-actions: [issue]
+  page-footer:
+    center: "Lorentz Center Workshop, Leiden 2026 | [LORENTZCENTER.NL](https://www.lorentzcenter.nl)"
+  navbar:
+    background: "#003865"
+    foreground: light
+    title: "SA–IDM Workshop"
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Programme"
+        href: programme.qmd
+      - text: "Case Studies"
+        href: case-studies.qmd
+      - text: "Materials"
+        menu:
+          - text: "Day 1: Foundation Setting"
+            href: day1.qmd
+          - text: "Day 2: Methodological Exploration"
+            href: day2.qmd
+          - text: "Day 3: Integration & Refinement"
+            href: day3.qmd
+          - text: "Day 4: Knowledge Transfer Tools"
+            href: day4.qmd
+          - text: "Day 5: Consolidation & Future Directions"
+            href: day5.qmd
+      - text: "Analysis"
+        menu:
+          - text: "Group Scripts Overview"
+            href: analysis/index.qmd
+          - text: "Group A1"
+            href: analysis/group-A1/
+          - text: "Group A2"
+            href: analysis/group-A2/
+          - text: "Group B1"
+            href: analysis/group-B1/
+          - text: "Group B2"
+            href: analysis/group-B2/
+      - text: "Vignettes"
+        href: vignettes/index.qmd
+      - text: "Preparation"
+        menu:
+          - text: "Software & Setup"
+            href: preparation.qmd
+          - text: "Pre-Course Reading"
+            href: pre-reading.qmd
+      - text: "Resources"
+        href: resources.qmd
+      - text: "Organizers"
+        href: organizers.qmd
+    right:
+      - icon: github
+        href: https://github.com/kylieainslie/lorentz_center_workshop
+
+format:
+  html:
+    theme:
+      light: flatly
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    page-layout: article

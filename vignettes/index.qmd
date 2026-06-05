@@ -1,0 +1,52 @@
+---
+title: "Vignettes"
+subtitle: "Cross-disciplinary worked examples from the workshop"
+---
+
+Vignettes document the analytical approaches developed during the workshop, combining scientific motivation, step-by-step methodology, and fully reproducible R code. Each vignette covers a specific SA–IDM integration example applied to one of the two case studies.
+
+::: {.callout-note}
+Vignettes will be added here as they are finalized during and after the workshop.
+:::
+
+## Case Study A — Natural Course of the Epidemic
+
+*Vignettes to be added*
+
+## Case Study B — Vaccine Efficacy
+
+*Vignettes to be added*
+
+## How to Contribute a Vignette
+
+1. Create a new `.qmd` file in the `vignettes/` folder using the naming convention `vignette-[topic].qmd`
+2. Write your vignette using the template below
+3. Commit and push — it will appear on the site automatically
+
+### Vignette Template
+
+```markdown
+---
+title: "Your Vignette Title"
+author: "Author Names"
+date: today
+---
+
+## Scientific Background
+
+## Methods
+
+## Data
+
+## Analysis
+
+## Results
+
+## Discussion and Limitations
+
+## Session Info
+
+```{r}
+sessionInfo()
+```
+```

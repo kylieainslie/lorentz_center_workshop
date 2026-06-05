@@ -1,0 +1,39 @@
+---
+title: "Group Analysis Scripts"
+subtitle: "Working code from workshop groups"
+---
+
+Each working group has a subfolder here for their analysis scripts. Groups are free to organize their code however works best for them — the structure below is just a starting point.
+
+## Groups
+
+| Group | Case Study | Folder |
+|-------|-----------|--------|
+| Group A1 | Case Study A (Natural epidemic course) | `group-A1/` |
+| Group A2 | Case Study A (Natural epidemic course) | `group-A2/` |
+| Group B1 | Case Study B (Vaccine efficacy) | `group-B1/` |
+| Group B2 | Case Study B (Vaccine efficacy) | `group-B2/` |
+
+## Suggested Folder Structure
+
+```
+analysis/
+├── group-A1/
+│   ├── 01_explore_data.R
+│   ├── 02_analysis_plan.md
+│   ├── 03_competing_risks.R
+│   └── 04_multistate_model.R
+├── group-A2/
+│   └── ...
+├── group-B1/
+│   └── ...
+└── group-B2/
+    └── ...
+```
+
+## Guidelines
+
+- Use descriptive filenames prefixed with a number (e.g., `01_`, `02_`) to indicate order
+- Add a short comment at the top of each script explaining what it does
+- Commit regularly so your group members have access to the latest version
+- If a script takes a long time to run, save output objects (`.rds` files) and commit those too

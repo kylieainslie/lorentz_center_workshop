@@ -1,0 +1,70 @@
+---
+title: "Day 3 — Integration & Refinement"
+subtitle: "Wednesday 17 June 2026"
+---
+
+## Theme
+
+*Revealing the realistic potential and boundaries of cross-disciplinary approaches*
+
+Day 3 addresses the practical challenges that emerged on Day 2: censoring mechanisms, time-varying effects, computational efficiency, and identifiability. Groups refine their analysis strategies and prepare final presentations.
+
+---
+
+## Schedule
+
+| Time | Activity |
+|------|----------|
+| 9:00–10:00 | Open discussion: ideas, challenges, and outstanding questions across all groups |
+| 10:00–10:30 | Morning break |
+| 10:30–12:00 | Refine case study analysis plan · Implement refined analysis · Prepare code examples |
+| 12:00–14:00 | Lunch |
+| 14:00–15:30 | Continue working on case studies in small groups · Prepare presentation of final analysis plan |
+| 15:30–16:00 | Afternoon break |
+| 16:00–17:00 | **Plenary:** Group progress reports · Identify key learnings |
+
+---
+
+## Learning Objectives
+
+By the end of Day 3, participants will be able to:
+
+1. Articulate the key challenges in applying their chosen methods to the case study data
+2. Explain how their analysis plan was refined in response to Day 2 cross-group feedback
+3. Describe at least one practical limitation of applying SA or IDM methods in the other discipline's context
+4. Produce reproducible, annotated code implementing their analysis plan
+
+---
+
+## Key Challenges to Address
+
+### Data Challenges
+
+| Challenge | SA perspective | IDM perspective |
+|-----------|---------------|-----------------|
+| Censoring | Right-censoring, interval-censoring | Partially observed outbreak data |
+| Reporting delays | Lagged event times | Nowcasting, back-calculation |
+| Underreporting | Missing events | Ascertainment fraction estimation |
+| Time-varying effects | Time-varying covariates, landmarking | Non-stationary transmission rates |
+
+### Computational Challenges
+
+- Model fitting in high-dimensional parameter spaces
+- Bayesian vs. frequentist approaches
+- Identifiability and estimability from aggregate data
+
+---
+
+## Materials
+
+### Refined Analysis Plans
+
+*Groups will post their refined analysis plan documents here*
+
+### Code
+
+*Annotated code examples will be shared here after the workshop*
+
+### Key Learnings Summary
+
+*A summary of key learnings identified in the Day 3 plenary will be posted here*

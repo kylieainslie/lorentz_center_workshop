@@ -1,0 +1,28 @@
+.hero-banner {
+  background-color: #003865;
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.hero-banner em {
+  color: #c8d8e8;
+  font-style: normal;
+}
+
+/* Navbar brand colour */
+.navbar-brand {
+  font-weight: 700;
+}
+
+/* Table styling */
+table {
+  font-size: 0.95rem;
+}
+
+thead {
+  background-color: #f0f4f8;
+}

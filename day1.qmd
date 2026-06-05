@@ -1,0 +1,61 @@
+---
+title: "Day 1 — Foundation Setting"
+subtitle: "Monday 15 June 2026"
+---
+
+## Theme
+
+*Addressing the goal of making disciplinary (dis)connections explicit*
+
+Day 1 establishes the shared vocabulary and conceptual foundation for the week. Participants from survival analysis and infectious disease modeling communities meet, learn about each other's fields through introductory lectures, and begin working in mixed groups on the case studies.
+
+---
+
+## Schedule
+
+| Time | Activity |
+|------|----------|
+| 9:00–10:00 | Arrival and registration |
+| 10:00–10:30 | Welcome and opening by the Lorentz Center; intro to workshop |
+| 10:30–12:00 | Icebreakers · **Introduction to Survival Analysis** (lecture + Q&A) |
+| 12:00–14:00 | Lunch |
+| 14:00–15:30 | **Introduction to Infectious Disease Modeling** (lecture + Q&A) · Form mixed groups · Introduce Case Studies A and B |
+| 15:30–16:00 | Afternoon break |
+| 16:00–17:00 | **Plenary:** Groups present first ideas on how to approach their case study |
+| 17:00–19:00 | Welcome reception |
+
+---
+
+## Learning Objectives
+
+By the end of Day 1, participants will be able to:
+
+1. Articulate the key concepts, assumptions, and outputs of survival analysis (hazard functions, censoring, multi-state models, frailty)
+2. Articulate the key concepts of infectious disease modeling (compartmental models, reproduction number, transmission dynamics)
+3. Identify at least three methodological connections or points of divergence between the two fields
+4. Describe the structure, variables, and analytical goals of their assigned case study
+
+---
+
+## Materials
+
+### Introduction to Survival Analysis
+
+*Slides and materials will be posted here*
+
+### Introduction to Infectious Disease Modeling
+
+*Slides and materials will be posted here*
+
+### Case Study Introduction
+
+*Case study overview document will be posted here — see also the [Case Studies](case-studies.qmd) page*
+
+---
+
+## Day 1 Goals
+
+- Establish common vocabulary between the SA and IDM communities
+- Identify specific methodological gaps and opportunities for knowledge exchange
+- Form four mixed-discipline working groups (two groups per case study)
+- Discuss first ideas for approaching the assigned case study

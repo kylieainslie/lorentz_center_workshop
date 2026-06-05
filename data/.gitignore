@@ -1,0 +1,12 @@
+# Ignore data files — do not commit raw datasets to the repo
+*.csv
+*.tsv
+*.rds
+*.rda
+*.RData
+*.xlsx
+*.xls
+
+# Allow README and documentation
+!*.md
+!*.qmd

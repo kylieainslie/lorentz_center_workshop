@@ -1,0 +1,69 @@
+---
+title: "Day 2 — Methodological Exploration"
+subtitle: "Tuesday 16 June 2026"
+---
+
+## Theme
+
+*Creating practical pathways for cross-disciplinary learning through active collaboration*
+
+Day 2 is the first full day of hands-on analysis. Groups explore their case study data, develop analysis plans, begin implementation, and share preliminary findings with the partner group working on the same case study.
+
+---
+
+## Schedule
+
+| Time | Activity |
+|------|----------|
+| 9:00–10:00 | Small group work: explore data, develop analysis plans, begin implementation |
+| 10:00–10:30 | Morning break |
+| 10:30–12:00 | Continue analyses · Prepare preliminary findings |
+| 12:00–12:30 | **Keynote:** IDM perspective — case studies illustrating challenges and areas for collaboration |
+| 12:30–14:00 | Lunch |
+| 14:00–15:30 | **Intergroup session:** Groups working on the same case study present and compare analysis plans · Groups separate and refine |
+| 15:30–16:00 | Afternoon break |
+| 16:00–17:00 | **Plenary:** Discuss both case studies with everyone |
+| 18:30 | Conference dinner |
+
+---
+
+## Learning Objectives
+
+By the end of Day 2, participants will be able to:
+
+1. Apply at least one SA technique (competing risks, multi-state models, or frailty models) to an infectious disease problem
+2. Apply at least one IDM approach (compartmental modeling or data synthesis) to the case study data
+3. Identify practical challenges encountered when applying methods cross-disciplinarily
+4. Give and receive constructive feedback on analysis plans from a complementary disciplinary perspective
+
+---
+
+## Methods in Focus
+
+### Survival Analysis Methods
+
+- **Competing risks:** handling multiple event types (infection, hospitalization, death)
+- **Multi-state models:** modeling transitions through disease states (S → E → I → R/D)
+- **Frailty models:** capturing unobserved heterogeneity in susceptibility or infectiousness
+
+### Infectious Disease Modeling Methods
+
+- **Compartmental SEIRD models:** mechanistic representation of epidemic dynamics
+- **Data synthesis:** combining aggregate surveillance data with mechanistic assumptions
+- **Reproduction number estimation:** Rt estimation from case count time series
+
+---
+
+## Materials
+
+### Keynote Slides (IDM Perspective)
+
+*To be posted after the workshop*
+
+### Group Analysis Plans
+
+*Groups will share their analysis plan documents here*
+
+### Code Examples
+
+*Preliminary code from group sessions will be shared here*

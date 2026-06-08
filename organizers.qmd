@@ -4,42 +4,58 @@ title: "Scientific Organizers"
 
 ## Organizing Committee
 
-### Liesbeth de Wreede
+### Dr. Liesbeth de Wreede
 **Leiden University Medical Center (LUMC)**
 
-*Biography to be added*
+I am an assistant professor in medical statistics, specialising in survival analysis. I collaborate extensively with clinicians and researchers in the field of hematopoietic (mainly allogeneic) stem cell transplantation, both inside and outside LUMC (EBMT, DKMS, HOVON, CIBMTR). In addition, I supervise PhD candidates and postdocs, both in developing and investigating statistical methodology and in applying complex models in clinical studies. I teach as well, mainly to students in Medicine and Biomedical Sciences. Together with Hein Putter, I organise the course Advanced Survival Analysis.
+I have studied Mathematics, and Greek and Latin Languages and Cultures at Leiden University. Afterwards, I have defended a PhD thesis on a topic from history of mathematics at Utrecht University. I have been working at LUMC since 2006.
+
+My scientific research is motivated by problems which occur in the analysis of clinical data where different relevant events play a role. This has led to a series of publications about competing risks and multi-state models, both in the methodological area and in new applications. In particular, I am interested in the combination of multi-state models and relative survival. Besides, I study different missing data problems (imputation strategies, haplotype reconstruction, missing data in the context of prediction models, coarsened observations). These models are usually applied in studies in the domain of cancer (esp. hematological cancers), often with an immunological component.
 
 ---
 
-### Hein Putter
+### Professor Hein Putter
 **Leiden University Medical Center (LUMC)**
 
-*Biography to be added*
+I am a professor of medical statistics, where my three main responsibilities are consultation (supporting medical research), teaching, and methodological research. I studied mathematics at Leiden University and subsequently obtained my PhD there. After several post-doc positions in mathematical statistics in Amsterdam and Cambridge, I transitioned to biostatistics. I have now been working at LUMC for 25 years. I am an Associate Editor for Biostatistics and the Journal of the Royal Statistical Society A, and I am affiliated with the STRATOS initiative.
+
+My scientific research can broadly be divided into two distinct areas. The first is contributing to medical research. In that capacity, I have served as a statistician in several leading oncological studies, such as the Dutch Gastric Cancer trial, and the TME, TEAM, PROCTOR-SCRIPT, CRITICS, RAPIDO, and PORTEC studies (2, 3, and 4). This aligns with the LUMC cancer theme. The second area of research is methodological research. I have specialized in methodology for survival analysis, particularly competing risks and multi-state models, dynamic prediction, and also frailty models. Together with Hans van Houwelingen, I co-authored a book for Chapman & Hall on dynamic prediction. In the area of competing risks and multi-state models, I have written a frequently cited tutorial and received a ZonMW-TOP grant.
 
 ---
 
-### Kylie Ainslie
+### Dr. Kylie Ainslie
 **University of Melbourne & University of Hong Kong**
 
-*Biography to be added*
+Dr. Kylie Ainslie is an infectious disease modeller and biostatistician who develops mathematical models and statistical methods to understand how diseases spread and the impact of interventions (e.g., vaccines) on disease transmission. She is Modelling for Policy Lead at the Peter Doherty Institute for Infection and Immunity, University of Melbourne and an Honorary Assistant Professor at the University of Hong Kong School of Public Health. She has led critical modelling initiatives in the United Kingdom and Netherlands that directly informed policy decisions. Her work spans multiple pathogens including SARS-CoV-2, influenza, mpox, measles, and scabies. 
+
+Previously, Kylie was a Senior Researcher at the Dutch National Institute for Public Health and the Environment (RIVM) (2020-2025). At RIVM, she developed transmission models with vaccination and directly advised the government on health policy, including key decisions throughout the Dutch COVID-19 vaccine rollout. Kylie conducted postdoctoral research at the MRC Centre for Global Infectious Disease Analysis at Imperial College London (2018-2020) to determine how repeated exposures to influenza through natural infections and vaccines influenced an individual’s susceptibility to subsequent infections. During the COVID-19 pandemic, she led the analytical pipeline for Imperial’s Real-time Assessment of Community Transmission (REACT-1) study, providing regular surveillance reports to the UK government that shaped England's COVID-19 pandemic response. Kylie received her PhD in Biostatistics from Emory University in 2018, where her doctoral research focused on developing statistical methods to evaluate influenza vaccine effectiveness.
 
 ---
 
-### Don Klinkenberg
+### Dr. Don Klinkenberg
 **National Institute for Public Health and the Environment (RIVM) & Wageningen University and Research**
 
-*Biography to be added*
+Dr. Don Klinkenberg is infectious disease modeller at the department of Modelling of Infectious Disease. He wants to understand the spread of infectious diseases, to use it for advising on public health. The use of data is essential, and combining different sources and types of data is what he finds most interesting and challenging. He prefers analysis of data by using models that he specifically develops and adjusts for the particular problem that has to be addressed.
+Don developed a method for the use of genetic differences between viruses or bacteria sampled from individual patients, to identify whom infected whom during an outbreak. This method is publicly available as a piece of software: an R-package [`phybreak`](www.github.com/donkeyshot/phybreak).
+
+During the COVID-19 pandemic he worked on a transmission model for SARS-CoV-2 to make prognoses for hospital and IC-admission, and to evaluate scenarios. He also worked on a model to evaluate CoronaMelder, the app by which users could be notified when they had had contact with an infected person. Other topics are the spread of measles within and between schools, and a better understanding of infectious disease spread by modelling human behaviour.
 
 ---
 
-### Jacco Wallinga
+### Professor Jacco Wallinga
 **National Institute for Public Health and the Environment (RIVM) & Leiden University Medical Center (LUMC)**
 
-*Biography to be added*
+Professor Jacco Wallinga heads the unit for Infectious Disease Modelling at RIVM and holds the chair in Mathematical Modelling of Infectious Diseases at the department of Biomedical Data Sciences of the Leiden University Medical Center. He works on the estimation and prediction of the effect of control measures on the dynamics of infectious diseases.
+
+Jacco graduated from Wageningen University in 1992 and obtained his doctoral degree at the same university in 1998. Since 1997, he has analysed the dynamics of infectious diseases at RIVM. He became head of the RIVM department of Modelling of Infectious Diseases in 2005. He published over 200 articles in international peer-reviewed scientific journals. He advises the Dutch government and international organisations on vaccination policies.
+
+He is interested in understanding and predicting the impact of directed control measures on infection dynamics. In recent years, his research has focused on three themes: real-time estimation of key epidemiological variables of infectious disease outbreaks, characterisation of contact networks using information on social contact data, and epidemic models to interpret molecular sequence data of pathogens.
 
 ---
 
-### Steven Abrams
+### Dr. Steven Abrams
 **UHasselt & University of Antwerp**
 
-*Biography to be added*
+In his research, Dr. Steven Abrams uses and develops novel statistical and mathematical methodology for the analysis of infectious disease data with the aim of improving the understanding of infectious disease dynamics and transmission, the evaluation of intervention strategies and surveillance for vaccine-preventable diseases.
+
+He is also affiliated to the Center for Statistics (CenStat), Interuniversity Institute for Biostatistics and statistical Bioinformatics (I-BioStat) at Hasselt University (UHasselt) and is a member of the SIMID group.

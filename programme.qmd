@@ -5,15 +5,13 @@ subtitle: "15–19 June 2026, Lorentz Center, Leiden"
 
 ## Overview
 
-Each day of the workshop builds systematically toward bridging methodological gaps between survival analysis and infectious disease modeling.
-
-| Day | Theme | Goal |
-|-----|-------|------|
-| **Day 1** | Foundation Setting | Make disciplinary (dis)connections explicit |
-| **Day 2** | Methodological Exploration | Create practical pathways for cross-disciplinary learning |
-| **Day 3** | Integration & Refinement | Reveal realistic potential and boundaries of cross-disciplinary approaches |
-| **Day 4** | Knowledge Transfer Tools | Produce concrete tools and guidance for the wider research community |
-| **Day 5** | Consolidation & Future Directions | Ensure lasting impact and continued cross-disciplinary collaboration |
+| Day | Theme |
+|-----|-------|
+| **Day 1** | Foundation Setting |
+| **Day 2** | Methodological Exploration |
+| **Day 3** | Integration & Refinement |
+| **Day 4** | Knowledge Transfer Tools |
+| **Day 5** | Consolidation & Future Directions |
 
 ---
 
@@ -24,12 +22,12 @@ Each day of the workshop builds systematically toward bridging methodological ga
 | Time | Activity |
 |------|----------|
 | 9:00–10:00 | Arrival and registration |
-| 10:00–10:30 | Intro to workshop; welcome and opening by the Lorentz Center |
+| 10:00–10:30 | Welcome and opening by the Lorentz Center |
 | 10:30–12:00 | Icebreakers · Introduction to Survival Analysis (lecture + Q&A) |
 | 12:00–14:00 | Lunch |
-| 14:00–15:30 | Introduction to Infectious Disease Modeling (lecture + Q&A) · Divide into mixed small groups; introduce Case Studies A and B; discuss initial analysis ideas |
+| 14:00–15:30 | Introduction to Infectious Disease Modeling (lecture + Q&A) · Form mixed groups · Introduce Case Studies A and B |
 | 15:30–16:00 | Afternoon break |
-| 16:00–17:00 | **Plenary / Wrap-up:** Groups present first ideas on how to approach their case study |
+| 16:00–17:00 | **Plenary:** Groups present first ideas on how to approach their case study |
 | 17:00–19:00 | Welcome reception |
 
 ---
@@ -41,11 +39,11 @@ Each day of the workshop builds systematically toward bridging methodological ga
 | 9:00–10:00 | Small group work: explore data, develop analysis plans, begin implementation |
 | 10:00–10:30 | Morning break |
 | 10:30–12:00 | Continue analyses · Prepare preliminary findings |
-| 12:00–12:30 | Keynote presentation by IDM key participant: case studies illustrating challenges and areas for collaboration |
+| 12:00–12:30 | Keynote: IDM perspective on case studies |
 | 12:30–14:00 | Lunch |
-| 14:00–15:30 | Intergroup presentation and discussion: groups working on the same case study discuss and compare analysis plans · Groups separate and refine |
+| 14:00–15:30 | Intergroup session: groups on the same case study compare analysis plans · Separate and refine |
 | 15:30–16:00 | Afternoon break |
-| 16:00–17:00 | **Plenary / Wrap-up:** Discuss both case studies with everyone |
+| 16:00–17:00 | **Plenary:** Discuss both case studies with everyone |
 | 18:30 | Conference dinner |
 
 ---
@@ -54,13 +52,13 @@ Each day of the workshop builds systematically toward bridging methodological ga
 
 | Time | Activity |
 |------|----------|
-| 9:00–10:00 | Open discussion of ideas, challenges, and outstanding questions |
+| 9:00–10:00 | Open discussion: ideas, challenges, outstanding questions |
 | 10:00–10:30 | Morning break |
-| 10:30–12:00 | Refine case study analysis plan · Implement refined analysis plan |
+| 10:30–12:00 | Refine analysis plan · Implement · Prepare code examples |
 | 12:00–14:00 | Lunch |
-| 14:00–15:30 | Continue working on case studies in small groups; create code examples and prepare presentation of final analysis plan |
+| 14:00–15:30 | Continue case study work in small groups |
 | 15:30–16:00 | Afternoon break |
-| 16:00–17:00 | **Plenary / Wrap-up:** Group progress reports · Identify key learnings |
+| 16:00–17:00 | **Plenary:** Group progress reports · Identify key learnings |
 
 ---
 
@@ -68,14 +66,14 @@ Each day of the workshop builds systematically toward bridging methodological ga
 
 | Time | Activity |
 |------|----------|
-| 9:00–10:00 | Introduction to "Ten Simple Rules" concept · Begin brainstorming rules · Form writing and coding teams |
+| 9:00–10:00 | Introduce "Ten Simple Rules" · Brainstorm · Form writing and coding teams |
 | 10:00–10:30 | Morning break |
-| 10:30–12:00 | Begin vignette development in mixed groups · Document code examples · Write Ten Simple Rules |
-| 12:00–12:30 | Keynote presentation by SA key participant: case studies illustrating challenges and areas for collaboration |
+| 10:30–12:00 | Begin vignette development · Document code examples · Draft Ten Simple Rules |
+| 12:00–12:30 | Keynote: SA perspective on case studies |
 | 12:30–14:00 | Lunch |
 | 14:00–15:30 | Continue vignette development |
 | 15:30–16:00 | Afternoon break |
-| 16:00–17:00 | **Plenary / Wrap-up:** Discuss draft Ten Simple Rules |
+| 16:00–17:00 | **Plenary:** Review draft Ten Simple Rules |
 
 ---
 
@@ -83,21 +81,10 @@ Each day of the workshop builds systematically toward bridging methodological ga
 
 | Time | Activity |
 |------|----------|
-| 9:00–10:00 | Plenary: Review and finalize Ten Simple Rules · Presentations of vignettes and code examples |
+| 9:00–10:00 | **Plenary:** Finalize Ten Simple Rules · Present vignettes and code examples |
 | 10:00–10:30 | Morning break |
-| 10:30–12:00 | Future tasks and responsibilities · Finalize action plans · Assign post-workshop responsibilities · Closing activity / celebration |
+| 10:30–12:00 | Finalize action plans · Assign post-workshop responsibilities · Closing celebration |
 | 12:00–14:00 | Lunch |
-| 14:00–15:30 | Optional activities (outreach to broader audience) |
+| 14:00–15:30 | Optional activities |
 | 15:30–16:00 | Afternoon break |
 | 16:00–17:00 | Optional plenary / wrap-up |
-
----
-
-## Workshop Outcomes
-
-By the end of the week, participants will have collectively produced:
-
-1. **Vignettes** — worked examples demonstrating cross-disciplinary analytical approaches applied to the two case studies, with annotated code in R/Python
-2. **Ten Simple Rules** — a document providing practical guidance for integrating SA and IDM methods, suitable for publication
-3. **Online resource** — this website hosting the ten-rules document, code examples, and workshop materials for the wider research community
-4. **Collaboration plans** — identified research gaps, assigned post-workshop responsibilities, and agreed next steps for continued cross-disciplinary work

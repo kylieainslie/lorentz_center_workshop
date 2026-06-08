@@ -1,6 +1,6 @@
 ---
 title: "Resources"
-subtitle: "Background reading, software, and related tools"
+subtitle: "Background reading and related tools"
 ---
 
 ## Survival Analysis
@@ -10,18 +10,6 @@ subtitle: "Background reading, software, and related tools"
 - Kalbfleisch JD, Prentice RL. *The Statistical Analysis of Failure Time Data.* 2nd ed. Wiley, 2002.
 - Klein JP, Moeschberger ML. *Survival Analysis: Techniques for Censored and Truncated Data.* 2nd ed. Springer, 2003.
 - Putter H, Fiocco M, Geskus RB. Tutorial in biostatistics: competing risks and multi-state models. *Statistics in Medicine* 2007; 26(11):2389–2430.
-
-### R Packages
-
-| Package | Purpose | CRAN / GitHub |
-|---------|---------|---------------|
-| `survival` | Core survival analysis | [CRAN](https://cran.r-project.org/package=survival) |
-| `mstate` | Multi-state models | [CRAN](https://cran.r-project.org/package=mstate) |
-| `flexsurv` | Flexible parametric models | [CRAN](https://cran.r-project.org/package=flexsurv) |
-| `frailtyEM` | Frailty models (EM algorithm) | [CRAN](https://cran.r-project.org/package=frailtyEM) |
-| `timereg` | Additive hazard models | [CRAN](https://cran.r-project.org/package=timereg) |
-| `cmprsk` | Competing risks | [CRAN](https://cran.r-project.org/package=cmprsk) |
-| `survminer` | Visualization | [CRAN](https://cran.r-project.org/package=survminer) |
 
 ---
 
@@ -33,38 +21,8 @@ subtitle: "Background reading, software, and related tools"
 - Vynnycky E, White RG. *An Introduction to Infectious Disease Modelling.* Oxford University Press, 2010.
 - Anderson RM, May RM. *Infectious Diseases of Humans: Dynamics and Control.* Oxford University Press, 1991.
 
-### R Packages
-
-| Package | Purpose | CRAN / GitHub |
-|---------|---------|---------------|
-| `EpiEstim` | Rt estimation from case counts | [CRAN](https://cran.r-project.org/package=EpiEstim) |
-| `EpiNow2` | Nowcasting and Rt estimation with delays | [CRAN](https://cran.r-project.org/package=EpiNow2) |
-| `deSolve` | ODE solver for compartmental models | [CRAN](https://cran.r-project.org/package=deSolve) |
-| `odin` | Efficient ODE model specification | [CRAN](https://cran.r-project.org/package=odin) |
-| `socialmixr` | Contact matrices | [CRAN](https://cran.r-project.org/package=socialmixr) |
-| `outbreaks` | Example outbreak datasets | [CRAN](https://cran.r-project.org/package=outbreaks) |
-
 ---
 
-## Cross-disciplinary Connections
+## Cross-disciplinary
 
-### Key Papers
-
-*Pre-workshop reading papers will be listed here. These will also be distributed to participants directly.*
-
----
-
-## The Lorentz Center
-
-The [Lorentz Center](https://www.lorentzcenter.nl) in Leiden, the Netherlands, is an international center for scientific workshops. The center facilitates high-impact scientific meetings that stimulate scientific exchange, new collaborations, and innovative research.
-
-This workshop is part of the **NIAS-Lorentz Program**, which brings together perspectives from the humanities and social sciences with the natural and technological sciences.
-
----
-
-## Questions and Contact
-
-For questions about the workshop, please:
-
-- [Open an issue](https://github.com/kylieainslie/lorentz_center_workshop/issues) on the GitHub repository
-- Contact the organizers via the [Lorentz Center workshop page](https://www.lorentzcenter.nl)
+*Papers directly addressing the intersection of SA and IDM will be listed here*

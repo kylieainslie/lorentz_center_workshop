@@ -15,36 +15,7 @@ toc: false
 
 Survival analysis (SA) and infectious disease modelling (IDM) are two disciplines that frequently tackle similar scientific problems—time-to-event outcomes, heterogeneity in populations, and the effects of interventions—yet they do so with largely separate methodological frameworks. This workshop brings together researchers from both communities to make these (dis)connections explicit, learn from one another, and develop shared tools for cross-disciplinary analysis.
 
-Over five days, participants will:
-
-- Establish a **common vocabulary** between the SA and IDM communities
-- Identify **methodological gaps and opportunities** for knowledge exchange
-- Apply methods from both fields to **shared case studies** using realistic simulated epidemic data
-- Produce **practical resources** (vignettes, code examples, decision frameworks) for the wider research community
-- Draft **"Ten Simple Rules"** for integrating SA and IDM methods
-
-## Topics
-
-| Survival Analysis | Infectious Disease Modeling |
-|---|---|
-| Multi-state models | Compartmental SIR/SEIRD models |
-| Frailty models | Reproduction number estimation |
-| Competing risks | Vaccine efficacy estimation |
-| Additive hazard models | Time-dependent vaccine effectiveness |
-| Censoring & time-varying effects | Reporting delays & underreporting |
-| Heterogeneity in populations | Heterogeneity in susceptibility & infectiousness |
-
-## Workshop Format
-
-Participants work in **small, intentionally mixed groups** across expertise areas and career stages. Each day includes:
-
-- Morning sessions: lectures, group work, or structured discussions
-- Afternoon sessions: hands-on analysis, cross-group presentations
-- Daily plenary wrap-up: sharing progress, insights, and challenges
-
-The week builds progressively from foundation-setting on Day 1 through to finalizing community resources and future collaboration plans on Day 5.
-
-See the [Programme](programme.qmd) for the full schedule and the [Case Studies](case-studies.qmd) page for details on the two datasets used throughout the week.
+Over five days, participants will work in small mixed groups on two shared case studies using realistic simulated epidemic data, and collectively produce vignettes, code examples, and a "Ten Simple Rules" guide for SA–IDM integration. See the [Programme](programme.qmd) for the full schedule.
 
 ## Scientific Organizers
 
@@ -56,16 +27,6 @@ See the [Programme](programme.qmd) for the full schedule and the [Case Studies](
 | Don Klinkenberg | RIVM & Wageningen University and Research |
 | Jacco Wallinga | RIVM & Leiden University Medical Center (LUMC) |
 | Steven Abrams | UHasselt & University of Antwerp |
-
-For full organizer profiles see the [Organizers](organizers.qmd) page.
-
-## Materials
-
-Workshop materials—slides, code, datasets, and vignettes—are shared on this site as they become available. Use the **Materials** menu above to navigate by day.
-
-::: {.callout-note}
-Pre-workshop reading materials and case study data will be distributed to registered participants ahead of the workshop. This website will serve as the central hub for all shared resources during and after the event.
-:::
 
 ---
 

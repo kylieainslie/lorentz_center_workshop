@@ -1,0 +1,120 @@
+---
+title: "Before You Arrive"
+subtitle: "Reading and software to prepare before the workshop"
+---
+
+::: {.callout-note}
+These materials help participants from both communities build enough background to engage productively from Day 1. You do not need to be an expert in the other field — the goal is familiarity with key concepts and terminology.
+:::
+
+---
+
+## Pre-Course Reading
+
+### For Participants from Survival Analysis
+
+These readings introduce infectious disease modeling concepts used throughout the workshop.
+
+*Papers and chapters will be listed here*
+
+**Key concepts to be familiar with:**
+
+- The SIR/SEIRD compartmental model framework
+- The basic reproduction number R~0~ and effective reproduction number R~eff~(t)
+- Reporting delays and underreporting in epidemic surveillance data
+- The difference between individual-level and aggregate (population-level) data
+
+---
+
+### For Participants from Infectious Disease Modeling
+
+These readings introduce survival analysis concepts and methods used throughout the workshop.
+
+*Papers and chapters will be listed here*
+
+**Key concepts to be familiar with:**
+
+- The hazard function and its relationship to survival probability
+- Right-censoring and interval-censoring: what they mean and how they are handled
+- Competing risks: what they are and why ignoring them can bias estimates
+- Multi-state models: modeling transitions between multiple states (e.g., S → E → I → R)
+- Frailty models: incorporating unobserved heterogeneity
+
+---
+
+### Cross-disciplinary Reading
+
+*Papers directly addressing the intersection of SA and IDM will be listed here*
+
+---
+
+## Software
+
+The workshop uses **R** as the primary computing environment. Please install the following before arriving.
+
+### R and RStudio
+
+- [R](https://cran.r-project.org/) (≥ 4.3.0 recommended)
+- [RStudio Desktop](https://posit.co/download/rstudio-desktop/)
+
+### R Packages
+
+#### Survival Analysis
+
+```r
+install.packages(c(
+  "survival",    # core survival analysis
+  "survminer",   # visualization
+  "mstate",      # multi-state models
+  "flexsurv",    # flexible parametric survival models
+  "frailtyEM",   # frailty models
+  "timereg",     # additive hazard models
+  "cmprsk"       # competing risks
+))
+```
+
+#### Infectious Disease Modeling
+
+```r
+install.packages(c(
+  "EpiEstim",    # reproduction number estimation
+  "EpiNow2",     # nowcasting and R estimation with delays
+  "deSolve",     # ODE solvers for compartmental models
+  "odin",        # fast ODE model specification
+  "socialmixr"   # contact matrices for structured populations
+))
+```
+
+#### General
+
+```r
+install.packages(c(
+  "tidyverse",
+  "ggplot2",
+  "patchwork",
+  "knitr",
+  "rmarkdown"
+))
+```
+
+Verify your installation:
+
+```r
+library(survival)
+library(mstate)
+library(EpiEstim)
+library(deSolve)
+cat("All core packages loaded successfully.\n")
+```
+
+---
+
+## Case Study Data
+
+The two case study datasets will be provided to participants ahead of the workshop and posted here for download.
+
+::: {.callout-warning}
+Please do not share the case study data externally — the complete underlying dataset is revealed at the end of the workshop as part of the learning experience.
+:::
+
+See the [Case Studies](case-studies.qmd) page for full descriptions of both datasets.

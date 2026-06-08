@@ -3,72 +3,28 @@ title: "Day 5 — Consolidation & Future Directions"
 subtitle: "Friday 19 June 2026"
 ---
 
-## Theme
-
-*Ensuring lasting impact and continued cross-disciplinary collaboration*
-
-Day 5 finalizes all workshop deliverables: the Ten Simple Rules are reviewed and agreed, vignettes are presented, and participants leave with clear responsibilities and plans for post-workshop collaboration.
-
----
+*Finalizing deliverables: Ten Simple Rules are reviewed and agreed, vignettes are presented, and participants leave with clear post-workshop plans.*
 
 ## Schedule
 
 | Time | Activity |
 |------|----------|
-| 9:00–10:00 | **Plenary:** Review and finalize Ten Simple Rules · Presentations of vignettes and code examples |
+| 9:00–10:00 | **Plenary:** Finalize Ten Simple Rules · Presentations of vignettes and code examples |
 | 10:00–10:30 | Morning break |
-| 10:30–12:00 | Future tasks and responsibilities · Finalize action plans · Assign post-workshop responsibilities · Closing activity and celebration |
+| 10:30–12:00 | Future tasks and responsibilities · Finalize action plans · Assign responsibilities · Closing celebration |
 | 12:00–14:00 | Lunch |
-| 14:00–15:30 | Optional activities (outreach to broader audience) |
+| 14:00–15:30 | Optional activities |
 | 15:30–16:00 | Afternoon break |
 | 16:00–17:00 | Optional plenary / wrap-up |
 
 ---
 
-## Learning Objectives
+## Materials
 
-By the end of Day 5, participants will have:
+### Ten Simple Rules — Final Document
 
-1. Reviewed and collectively agreed on the **Ten Simple Rules for SA–IDM Integration**
-2. Presented a **vignette** documenting their group's cross-disciplinary analytical approach
-3. Identified **research gaps** requiring new methodology development
-4. Established **post-workshop collaboration plans** with named responsibilities and timelines
-
----
-
-## Workshop Deliverables
-
-### Ten Simple Rules for SA–IDM Integration
-
-*Final version will be linked here after the workshop. The rules will be submitted as a manuscript to PLOS Computational Biology or a similar venue.*
+*Final version will be linked here after the workshop*
 
 ### Vignettes and Code Examples
 
-*Vignettes presented on Day 5 will be posted here. All code is reproducible and available on the [workshop GitHub repository](https://github.com/kylieainslie/lorentz_center_workshop).*
-
-### Community Resources
-
-This website serves as the persistent home for:
-
-- Workshop vignettes and code
-- Ten Simple Rules document
-- Links to related tools and packages
-- Contact information for follow-up collaborations
-
----
-
-## Post-Workshop Plans
-
-| Deliverable | Lead | Timeline |
-|-------------|------|----------|
-| Finalize vignettes | Coding teams | *TBD* |
-| Submit Ten Simple Rules manuscript | Writing team | *TBD* |
-| Update this website | Organizers | *TBD* |
-
-*Table will be filled in during Day 5 discussions*
-
----
-
-::: {.callout-note}
-Thank you for participating in the **Connecting Survival Analysis and Infectious Disease Modeling** workshop at the Lorentz Center. We look forward to the continued collaborations and community resources that emerge from this week.
-:::
+*All vignettes presented on Day 5 will be posted on the [Vignettes](../vignettes/index.qmd) page*

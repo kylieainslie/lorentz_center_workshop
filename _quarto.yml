@@ -33,28 +33,14 @@ website:
             href: day4.qmd
           - text: "Day 5: Consolidation & Future Directions"
             href: day5.qmd
-      - text: "Analysis"
-        menu:
-          - text: "Group Scripts Overview"
-            href: analysis/index.qmd
-          - text: "Group A1"
-            href: analysis/group-A1/
-          - text: "Group A2"
-            href: analysis/group-A2/
-          - text: "Group B1"
-            href: analysis/group-B1/
-          - text: "Group B2"
-            href: analysis/group-B2/
       - text: "Vignettes"
         href: vignettes/index.qmd
-      - text: "Preparation"
+      - text: "Before You Arrive"
         menu:
-          - text: "Software & Setup"
-            href: preparation.qmd
-          - text: "Pre-Course Reading"
-            href: pre-reading.qmd
-      - text: "Resources"
-        href: resources.qmd
+          - text: "Pre-Course Reading & Software"
+            href: before-you-arrive.qmd
+          - text: "Resources"
+            href: resources.qmd
       - text: "Organizers"
         href: organizers.qmd
     right:

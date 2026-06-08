@@ -3,13 +3,7 @@ title: "Day 4 — Knowledge Transfer Tools"
 subtitle: "Thursday 18 June 2026"
 ---
 
-## Theme
-
-*Producing concrete tools and guidance for the wider research community*
-
-Day 4 shifts from analysis to dissemination. Participants form writing and coding teams to produce vignettes with worked code examples, and begin drafting the "Ten Simple Rules for SA–IDM Integration."
-
----
+*Shifting from analysis to dissemination: groups develop vignettes with worked code examples and draft the "Ten Simple Rules for SA–IDM Integration".*
 
 ## Schedule
 
@@ -17,7 +11,7 @@ Day 4 shifts from analysis to dissemination. Participants form writing and codin
 |------|----------|
 | 9:00–10:00 | Introduce "Ten Simple Rules" concept · Brainstorm rules · Form writing and coding teams |
 | 10:00–10:30 | Morning break |
-| 10:30–12:00 | Begin vignette development in mixed groups · Document code examples · Write draft rules |
+| 10:30–12:00 | Begin vignette development in mixed groups · Document code examples · Draft Ten Simple Rules |
 | 12:00–12:30 | **Keynote:** SA perspective — case studies illustrating challenges and areas for collaboration |
 | 12:30–14:00 | Lunch |
 | 14:00–15:30 | Continue vignette development |
@@ -26,43 +20,9 @@ Day 4 shifts from analysis to dissemination. Participants form writing and codin
 
 ---
 
-## Learning Objectives
-
-By the end of Day 4, participants will be able to:
-
-1. Identify the most compelling SA–IDM integration examples from the case studies
-2. Contribute to a vignette documenting a cross-disciplinary analytical approach with annotated code
-3. Propose and justify at least two of the Ten Simple Rules for SA–IDM integration
-
----
-
-## Vignettes
-
-Vignettes document different analytical approaches to the same case study problem, complete with:
-
-- Scientific motivation and methodological background
-- Step-by-step code in R (and optionally Python)
-- Results, interpretation, and discussion of limitations
-
-Groups select the most informative cross-disciplinary examples from their work on Days 2–3 and develop these into standalone, reproducible documents.
-
-*Completed vignettes will be posted here after the workshop*
-
----
-
-## Ten Simple Rules
-
-The "Ten Simple Rules for SA–IDM Integration" document provides practical, actionable guidance for researchers in either field who want to apply methods from the other. It is modelled on the *PLOS Computational Biology* Ten Simple Rules series.
-
-### Draft Rules (to be refined on Day 5)
-
-*Rules will be posted here as they are developed*
-
----
-
 ## Materials
 
-### Keynote Slides (SA Perspective)
+### Keynote Slides
 
 *To be posted after the workshop*
 

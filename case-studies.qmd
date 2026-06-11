@@ -1,16 +1,16 @@
 ---
 title: "Case Study"
-subtitle: "Simulated epidemic data for cross-disciplinary analysis"
+subtitle: "Reconstruction of infection dynamics during a pandemic"
 ---
 
 ## Overview
 
-The workshop is structured around a single simulated population-wide outbreak. The underlying data are inspired by the SARS-CoV-2 pandemic and generated from a structured compartmental SEIRD model in a closed population of 1,000,000 individuals, with heterogeneity in susceptibility and infectiousness, an intervention period, and a vaccination campaign introduced partway through the outbreak.
+Participants analyse simulated outbreak data from a pandemic occurring in a closed structured population of 1,000,000 individuals. The simulation uses an individual-based model (HERMES) with an SIRVD structure, incorporating household, school, workplace, and community transmission, as well as vaccination and disease progression.
 
-Groups choose which questions to tackle from the case study document.
+Three datasets are available — incidence surveillance data, serological survey data, and contact tracing data — along with individual-level demographic information. Groups choose one of four questions (A–D) to focus on, drawing on whichever datasets are relevant.
 
 ::: {.callout-important}
-Participants do **not** see the underlying complete individual-level dataset until the very end of the workshop. The case study dataset is an extract designed to mimic realistic data availability settings.
+The complete individual-level dataset is not revealed until the end of the workshop.
 :::
 
 ---
@@ -19,21 +19,40 @@ Participants do **not** see the underlying complete individual-level dataset unt
 
 ```{=html}
 <div class="doc-cards">
-  <a href="assets/case-study.docx" class="doc-card" download>
-    <img src="assets/thumbnails/case-study.png" alt="Case Study" onerror="this.src='assets/thumbnails/placeholder.svg'">
-    <div class="doc-card-label">Case Study</div>
+  <a href="assets/Case_study1.docx" class="doc-card" download>
+    <img src="assets/thumbnails/Case_study1.png" alt="Case Study" onerror="this.src='assets/thumbnails/placeholder.svg'">
+    <div class="doc-card-label">Case Study I</div>
   </a>
 </div>
 ```
 
 ---
 
-## Data
+## Questions
 
-**Available data:** Daily aggregate counts of new infections (subject to reporting delays and underreporting), hospitalizations, deaths, and (from the vaccination period) vaccine uptake aggregated over population subgroups.
+### Group A — Key Epidemiological Parameters
+
+Estimate the basic and effective reproduction number, recovery time, incubation period, and reporting delay distribution using the incidence and contact tracing data.
+
+### Group B — Serial Interval Distribution
+
+Derive the serial interval distribution from the contact tracing data, and use it to inform reproduction number estimation via the Euler-Lotka equation.
+
+### Group C — Reporting Delays and Underreporting
+
+Estimate the reporting-delay distribution and quantify the degree of underreporting in the available incidence data.
+
+### Group D — Vaccine Effectiveness
+
+Estimate vaccine effectiveness against infection over time using individual-level vaccination history and breakthrough infection data, and assess the role of susceptible depletion in producing apparent waning.
 
 ---
 
-## Working Groups
+## Available Datasets
 
-Participants are divided into **four mixed-discipline groups**, intentionally composed across SA and IDM expertise and career stage. Each group selects questions from the case study document to focus on, shares preliminary findings in intergroup sessions, and presents to everyone in the daily plenary.
+| Dataset | Contents |
+|---------|----------|
+| `final_pop_data` | Individual-level demographic data (age, sex, household, workplace, vaccination and death times) |
+| `final_incidence_data` | Reported cases with symptom onset and reporting times |
+| `final_sero_data` | Repeated cross-sectional serological survey at days 10, 20, and 30 |
+| `final_contact_tracing_data` | Infector–infectee pairs with symptom onset times (days 10–20) |

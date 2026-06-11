@@ -3,31 +3,17 @@ title: "Group Analysis Scripts"
 subtitle: "Working code from workshop groups"
 ---
 
-Each working group has a subfolder here for their analysis scripts.
+Each group has a subfolder for their analysis scripts.
 
-## Groups
-
-| Group | Folder |
-|-------|--------|
-| Group 1 | `group-1/` |
-| Group 2 | `group-2/` |
-| Group 3 | `group-3/` |
-| Group 4 | `group-4/` |
-
-## Suggested Folder Structure
-
-```
-analysis/
-├── group-1/
-│   ├── 01_explore_data.R
-│   ├── 02_analysis_plan.md
-│   └── 03_main_analysis.R
-├── group-2/
-│   └── ...
-```
+| Group | Question | Folder |
+|-------|----------|--------|
+| Group A | Key epidemiological parameters | `group-A/` |
+| Group B | Serial interval distribution | `group-B/` |
+| Group C | Reporting delays and underreporting | `group-C/` |
+| Group D | Vaccine effectiveness | `group-D/` |
 
 ## Guidelines
 
-- Use descriptive filenames prefixed with a number to indicate order
+- Use descriptive filenames prefixed with a number to indicate order (e.g. `01_explore.R`, `02_analysis.R`)
 - Commit regularly so group members have access to the latest version
 - Save slow-running outputs as `.rds` files and commit those too

@@ -25,7 +25,6 @@ These readings introduce infectious disease modeling concepts used throughout th
 | Authors | Title | Journal | |
 |---------|-------|---------|--|
 | Grassly & Fraser | Mathematical models of infectious disease transmission | *Nature Reviews Microbiology* (2008) | [Download](assets/literature/Infectious%20diseases/Grassly_Nat2008.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
-| Abrams et al. | Hoe mens en wiskunde hand in hand het coronatijdperk kleuren | *NAW* (2020) | [Download](assets/literature/Infectious%20diseases/naw5-2020-21-2-084.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
 
 ---
 

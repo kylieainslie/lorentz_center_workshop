@@ -36,11 +36,7 @@ website:
       - text: "Vignettes"
         href: vignettes/index.qmd
       - text: "Before You Arrive"
-        menu:
-          - text: "Pre-Course Reading & Software"
-            href: before-you-arrive.qmd
-          - text: "Resources"
-            href: resources.qmd
+        href: before-you-arrive.qmd
       - text: "Organizers"
         href: organizers.qmd
     right:

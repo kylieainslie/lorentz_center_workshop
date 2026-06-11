@@ -15,20 +15,6 @@ These materials help participants from both communities build enough background 
 
 These readings introduce infectious disease modeling concepts used throughout the workshop.
 
-```{=html}
-<div class="doc-cards">
-  <a href="assets/literatuur/Infectious%20diseases/Grassly_Nat2008.pdf" class="doc-card" target="_blank">
-    <img src="assets/thumbnails/Grassly_Nat2008.png" alt="Grassly & Fraser 2008" onerror="this.src='assets/thumbnails/placeholder.svg'">
-    <div class="doc-card-label">Grassly & Fraser (2008)<br><em>Nature</em></div>
-  </a>
-  <a href="assets/literatuur/Infectious%20diseases/naw5-2020-21-2-084.pdf" class="doc-card" target="_blank">
-    <img src="assets/thumbnails/naw5-2020-21-2-084.png" alt="NAW 2020" onerror="this.src='assets/thumbnails/placeholder.svg'">
-    <div class="doc-card-label">NAW (2020)</div>
-  </a>
-</div>
-```
-
-
 **Key concepts to be familiar with:**
 
 - The SIR/SEIRD compartmental model framework
@@ -36,29 +22,24 @@ These readings introduce infectious disease modeling concepts used throughout th
 - Reporting delays and underreporting in epidemic surveillance data
 - The difference between individual-level and aggregate (population-level) data
 
+```{=html}
+<div class="doc-cards">
+  <a href="assets/literature/Infectious%20diseases/Grassly_Nat2008.pdf" class="doc-card" target="_blank">
+    <img src="assets/thumbnails/Grassly_Nat2008.png" alt="Grassly & Fraser 2008" onerror="this.src='assets/thumbnails/placeholder.svg'">
+    <div class="doc-card-label">Grassly & Fraser (2008)<br><em>Nature</em></div>
+  </a>
+  <a href="assets/literature/Infectious%20diseases/naw5-2020-21-2-084.pdf" class="doc-card" target="_blank">
+    <img src="assets/thumbnails/naw5-2020-21-2-084.png" alt="NAW 2020" onerror="this.src='assets/thumbnails/placeholder.svg'">
+    <div class="doc-card-label">NAW (2020)</div>
+  </a>
+</div>
+```
+
 ---
 
 ### For Participants from Infectious Disease Modeling
 
 These readings introduce survival analysis concepts and methods used throughout the workshop.
-
-```{=html}
-<div class="doc-cards">
-  <a href="assets/literatuur/Survival%20analysis/SiM%20-%202006%20-%20Putter%20-%20Tutorial%20in%20biostatistics%20competing%20risks%20and%20multi%E2%80%90state%20models.pdf" class="doc-card" target="_blank">
-    <img src="assets/thumbnails/Putter2006.png" alt="Putter et al. 2006" onerror="this.src='assets/thumbnails/placeholder.svg'">
-    <div class="doc-card-label">Putter et al. (2006)<br><em>Stat. in Medicine</em></div>
-  </a>
-  <a href="assets/literatuur/Survival%20analysis/Statistics%20in%20Medicine%20-%202020%20-%20Kragh%20Andersen%20-%20Analysis%20of%20time%E2%80%90to%E2%80%90event%20for%20observational%20studies%20Guidance%20to%20the%20use.pdf" class="doc-card" target="_blank">
-    <img src="assets/thumbnails/KraghAndersen2020.png" alt="Kragh Andersen et al. 2020" onerror="this.src='assets/thumbnails/placeholder.svg'">
-    <div class="doc-card-label">Kragh Andersen et al. (2020)<br><em>Stat. in Medicine</em></div>
-  </a>
-  <a href="assets/literatuur/Survival%20analysis/PoharPerme_relsurv2023.pdf" class="doc-card" target="_blank">
-    <img src="assets/thumbnails/PoharPerme2023.png" alt="Pohar Perme 2023" onerror="this.src='assets/thumbnails/placeholder.svg'">
-    <div class="doc-card-label">Pohar Perme (2023)</div>
-  </a>
-</div>
-```
-
 
 **Key concepts to be familiar with:**
 
@@ -68,12 +49,28 @@ These readings introduce survival analysis concepts and methods used throughout 
 - Multi-state models: modeling transitions between multiple states (e.g., S → E → I → R)
 - Frailty models: incorporating unobserved heterogeneity
 
+```{=html}
+<div class="doc-cards">
+  <a href="assets/literature/Survival%20analysis/SiM%20-%202006%20-%20Putter%20-%20Tutorial%20in%20biostatistics%20competing%20risks%20and%20multi%E2%80%90state%20models.pdf" class="doc-card" target="_blank">
+    <img src="assets/thumbnails/Putter2006.png" alt="Putter et al. 2006" onerror="this.src='assets/thumbnails/placeholder.svg'">
+    <div class="doc-card-label">Putter et al. (2006)<br><em>Stat. in Medicine</em></div>
+  </a>
+  <a href="assets/literature/Survival%20analysis/Statistics%20in%20Medicine%20-%202020%20-%20Kragh%20Andersen%20-%20Analysis%20of%20time%E2%80%90to%E2%80%90event%20for%20observational%20studies%20Guidance%20to%20the%20use.pdf" class="doc-card" target="_blank">
+    <img src="assets/thumbnails/KraghAndersen2020.png" alt="Kragh Andersen et al. 2020" onerror="this.src='assets/thumbnails/placeholder.svg'">
+    <div class="doc-card-label">Kragh Andersen et al. (2020)<br><em>Stat. in Medicine</em></div>
+  </a>
+  <a href="assets/literature/Survival%20analysis/PoharPerme_relsurv2023.pdf" class="doc-card" target="_blank">
+    <img src="assets/thumbnails/PoharPerme2023.png" alt="Pohar Perme 2023" onerror="this.src='assets/thumbnails/placeholder.svg'">
+    <div class="doc-card-label">Pohar Perme (2023)</div>
+  </a>
+</div>
+```
+
 ---
 
 ### Cross-disciplinary Reading
 
 *Papers will be added here*
-
 
 ---
 
@@ -140,10 +137,8 @@ cat("All core packages loaded successfully.\n")
 
 ## Case Study Data
 
-The two case study datasets will be provided to participants ahead of the workshop and posted here for download.
+The case study dataset will be provided to participants ahead of the workshop and posted on the [Case Study](case-studies.qmd) page for download.
 
 ::: {.callout-warning}
 Please do not share the case study data externally — the complete underlying dataset is revealed at the end of the workshop as part of the learning experience.
 :::
-
-See the [Case Studies](case-studies.qmd) page for full descriptions of both datasets.

@@ -18,7 +18,7 @@ website:
       - text: "Home"
         href: index.qmd
       - text: "Programme"
-        href: programme.qmd
+        href: https://www.lorentzcenter.nl/connecting-survival-analysis-and-infectious-disease-modeling.html
       - text: "Preparation"
         href: preparation.qmd
       - text: "Case Study"

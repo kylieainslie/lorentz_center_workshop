@@ -1,5 +1,5 @@
 ---
-title: "Before You Arrive"
+title: "Preparation"
 subtitle: "Reading and software to prepare before the workshop"
 ---
 
@@ -26,7 +26,6 @@ These readings introduce infectious disease modeling concepts used throughout th
 |---------|-------|---------|--|
 | Grassly & Fraser | Mathematical models of infectious disease transmission | *Nature Reviews Microbiology* (2008) | [Download](assets/literature/Infectious%20diseases/Grassly_Nat2008.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
 | Lipsitch | Challenges of vaccine effectiveness and waning studies | *Clinical Infectious Diseases* (2019) | [Download](assets/literature/Infectious%20diseases/Lipsitch%202019.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
-| Lipsitch | Challenges of vaccine effectiveness and waning studies | *Clinical Infectious Diseases* (2019) | [Download](assets/literature/Infectious%20diseases/Lipsitch_CID2019.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
 
 ---
 
@@ -47,12 +46,6 @@ These readings introduce survival analysis concepts and methods used throughout 
 | Putter, Fiocco & Geskus | Tutorial in biostatistics: competing risks and multi-state models | *Statistics in Medicine* (2006) | [Download](assets/literature/Survival%20analysis/SiM%20-%202006%20-%20Putter%20-%20Tutorial%20in%20biostatistics%20competing%20risks%20and%20multi%E2%80%90state%20models.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
 | Kragh Andersen et al. | Analysis of time-to-event for observational studies: guidance to the use of intensity models | *Statistics in Medicine* (2020) | [Download](assets/literature/Survival%20analysis/Statistics%20in%20Medicine%20-%202020%20-%20Kragh%20Andersen%20-%20Analysis%20of%20time%E2%80%90to%E2%80%90event%20for%20observational%20studies%20Guidance%20to%20the%20use.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
 | Pohar Perme, de Wreede & Manevski | What is relative survival and what is its role in haematology? | *Best Practice & Research Clinical Haematology* (2023) | [Download](assets/literature/Survival%20analysis/PoharPerme_relsurv2023.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
-
----
-
-### Cross-disciplinary Reading
-
-*Papers will be added here*
 
 ---
 
@@ -98,7 +91,6 @@ install.packages(c(
 ```r
 install.packages(c(
   "tidyverse",
-  "ggplot2",
   "patchwork",
   "knitr",
   "rmarkdown"

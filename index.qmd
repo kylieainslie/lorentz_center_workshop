@@ -7,7 +7,7 @@ toc: false
 
 ## About the Workshop
 
-Survival analysis (SA) and infectious disease modelling (IDM) are two disciplines that frequently tackle similar scientific problems - time-to-event outcomes, heterogeneity in populations, and the effects of interventions — yet they do so with largely separate methodological frameworks. This workshop brings together researchers from both communities to make these (dis)connections explicit, learn from one another, and develop shared tools for cross-disciplinary analysis.
+Survival analysis (SA) and infectious disease modelling (IDM) are two disciplines that frequently tackle similar scientific problems — time-to-event outcomes, heterogeneity in populations, and the effects of interventions — yet they do so with largely separate methodological frameworks. This workshop brings together researchers from both communities to make these (dis)connections explicit, learn from one another, and develop shared tools for cross-disciplinary analysis.
 
 Over five days, participants will work in small mixed groups on a shared simulated epidemic dataset and collectively produce vignettes, code examples, and a "Ten Simple Rules" guide for SA–IDM integration.
 
@@ -15,13 +15,17 @@ Over five days, participants will work in small mixed groups on a shared simulat
 
 | Page | What you'll find |
 |------|-----------------|
-| [Programme](programme.qmd) | Full daily schedule for all five days |
+| [Programme](https://www.lorentzcenter.nl/connecting-survival-analysis-and-infectious-disease-modeling.html) | Full daily schedule on the Lorentz Center website |
 | [Preparation](preparation.qmd) | Pre-course reading, R software setup, and case study data |
-| [Case Study](case-studies.qmd) | Description of the four group questions (A–D) and the downloadable case study document |
-| [Materials](day1.qmd) | Slides and code shared each day, plus workshop vignettes |
+| [Case Study](case-studies.qmd) | Group questions (A–D) and the downloadable case study document |
+| [Vignettes](vignettes/index.qmd) | Cross-disciplinary worked examples produced during the workshop |
 | [Organizers](organizers.qmd) | Scientific organizers and their affiliations |
 
+Day-by-day slides and code are available via the **Materials** menu in the navigation bar.
+
 ## Scientific Organizers
+
+The workshop is organized by six researchers from the SA and IDM communities. See the [Organizers](organizers.qmd) page for full profiles.
 
 | Name | Affiliation |
 |---|---|
@@ -31,6 +35,26 @@ Over five days, participants will work in small mixed groups on a shared simulat
 | Don Klinkenberg | RIVM & Wageningen University and Research |
 | Jacco Wallinga | RIVM & Leiden University Medical Center (LUMC) |
 | Steven Abrams | UHasselt & University of Antwerp |
+
+## Venue
+
+**[Lorentz Center @lambda](https://www.lorentzcenter.nl)**
+Niels Bohrweg 2, 2333 CA Leiden, the Netherlands
+
+This workshop is part of the [NIAS-Lorentz Program](https://www.lorentzcenter.nl/about/nias-lorentz-program.html).
+
+```{=html}
+<div style="margin: 1rem 0; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
+  <iframe
+    src="https://www.openstreetmap.org/export/embed.html?bbox=4.459%2C52.163%2C4.481%2C52.173&layer=mapnik&marker=52.1676%2C4.4700"
+    width="100%" height="300" style="border:0; display:block;"
+    allowfullscreen="" loading="lazy">
+  </iframe>
+</div>
+<p style="font-size:0.85rem; color:#6c757d;">
+  <a href="https://www.openstreetmap.org/?mlat=52.1676&mlon=4.4700#map=15/52.1676/4.4700" target="_blank">View larger map</a>
+</p>
+```
 
 ---
 

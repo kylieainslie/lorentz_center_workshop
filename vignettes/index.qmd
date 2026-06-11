@@ -3,17 +3,25 @@ title: "Vignettes"
 subtitle: "Cross-disciplinary worked examples from the workshop"
 ---
 
-Vignettes document the analytical approaches developed during the workshop, combining scientific motivation, step-by-step methodology, and fully reproducible R code. Each vignette covers a specific SA–IDM integration example applied to one of the two case studies.
+Vignettes document the analytical approaches developed during the workshop, combining scientific motivation, step-by-step methodology, and fully reproducible R code. Each vignette covers a specific SA–IDM integration example applied to the case study.
 
 ::: {.callout-note}
 Vignettes will be added here as they are finalized during and after the workshop.
 :::
 
-## Case Study A — Natural Course of the Epidemic
+## Group A — Key Epidemiological Parameters
 
 *Vignettes to be added*
 
-## Case Study B — Vaccine Efficacy
+## Group B — Serial Interval Distribution
+
+*Vignettes to be added*
+
+## Group C — Reporting Delays and Underreporting
+
+*Vignettes to be added*
+
+## Group D — Vaccine Effectiveness
 
 *Vignettes to be added*
 
@@ -25,7 +33,7 @@ Vignettes will be added here as they are finalized during and after the workshop
 
 ### Vignette Template
 
-```markdown
+````markdown
 ---
 title: "Your Vignette Title"
 author: "Author Names"
@@ -49,4 +57,4 @@ date: today
 ```{r}
 sessionInfo()
 ```
-```
+````

@@ -12,7 +12,7 @@ subtitle: "Thursday 18 June 2026"
 | 9:00–10:00 | Introduce "Ten Simple Rules" concept · Brainstorm rules · Form writing and coding teams |
 | 10:00–10:30 | Morning break |
 | 10:30–12:00 | Begin vignette development in mixed groups · Document code examples · Draft Ten Simple Rules |
-| 12:00–12:30 | **Keynote:** SA perspective — case studies illustrating challenges and areas for collaboration |
+| 12:00–12:30 | **Keynote:** SA perspective — the case study illustrating challenges and areas for collaboration |
 | 12:30–14:00 | Lunch |
 | 14:00–15:30 | Continue vignette development |
 | 15:30–16:00 | Afternoon break |

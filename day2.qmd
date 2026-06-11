@@ -3,7 +3,7 @@ title: "Day 2 — Methodological Exploration"
 subtitle: "Tuesday 16 June 2026"
 ---
 
-*Hands-on analysis: groups explore data, develop analysis plans, and share preliminary findings with the partner group on the same case study.*
+*Hands-on analysis: groups explore the data, develop analysis plans for their chosen question, and compare approaches with other groups.*
 
 ## Schedule
 

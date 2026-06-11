@@ -25,6 +25,8 @@ These readings introduce infectious disease modeling concepts used throughout th
 | Authors | Title | Journal | |
 |---------|-------|---------|--|
 | Grassly & Fraser | Mathematical models of infectious disease transmission | *Nature Reviews Microbiology* (2008) | [Download](assets/literature/Infectious%20diseases/Grassly_Nat2008.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
+| Lipsitch | Challenges of vaccine effectiveness and waning studies | *Clinical Infectious Diseases* (2019) | [Download](assets/literature/Infectious%20diseases/Lipsitch%202019.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
+| Lipsitch | Challenges of vaccine effectiveness and waning studies | *Clinical Infectious Diseases* (2019) | [Download](assets/literature/Infectious%20diseases/Lipsitch_CID2019.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
 
 ---
 

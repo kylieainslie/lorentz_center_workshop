@@ -849,26 +849,7 @@ tibble(week = weeks, baseline, observed) |>
 :::
 ::::
 
-## Thank you {.center}
-
-:::: {.columns}
-::: {.column width="55%"}
-**Questions for discussion**
-
-- Where does your own work already connect to IDM?
-- Where do the methods diverge?
-- What would help the most this week?
-:::
-::: {.column width="45%"}
-```{mermaid}
-%%| fig-width: 5
-flowchart LR
-  SA(("survival<br/>analysis")):::sa <-->|"shared<br/>math"| ID(("infectious<br/>disease<br/>modelling")):::id
-  classDef sa fill:#dfeefc,stroke:#1f77b4,color:#0b3d66,stroke-width:2px
-  classDef id fill:#fde2e2,stroke:#d62728,color:#5a0c0c,stroke-width:2px
-```
-:::
-::::
+## Questions? {.center}
 
 ---
 

@@ -73,21 +73,103 @@ The unit of analysis is a *population*, not a single patient.
 :::
 :::
 ::: {.column width="45%"}
-```{r}
-out_intro <- as.data.frame(ode(c(S = 0.999, I = 0.001, R = 0),
-                               seq(0, 120, 0.5), sir,
-                               parms = c(beta = 0.4, gamma = 0.15, N = 1)))
-out_intro |>
-  pivot_longer(-time, names_to = "state") |>
-  mutate(state = factor(state, levels = c("S", "I", "R"))) |>
-  ggplot(aes(time, value, colour = state)) +
-  geom_line(linewidth = 1.6) +
-  scale_colour_manual(values = pal,
-                      labels = c(S = "Susceptible", I = "Infectious", R = "Recovered")) +
-  scale_y_continuous(labels = scales::percent) +
-  labs(x = "day", y = "fraction of population", colour = NULL,
-       title = "An outbreak, abstracted") +
-  theme(legend.position = "bottom")
+```{=html}
+<canvas id="sir-sim" width="490" height="340"
+  style="border-radius:6px; background:#f8f9fa; display:block;"></canvas>
+<div style="font-size:0.78em; margin-top:7px; display:flex; gap:1.4em; color:#444;">
+  <span><span style="color:#1f77b4; font-size:1.2em;">●</span> Susceptible: <b id="sir-s">199</b></span>
+  <span><span style="color:#d62728; font-size:1.2em;">●</span> Infectious: <b id="sir-i">1</b></span>
+  <span><span style="color:#2ca02c; font-size:1.2em;">●</span> Recovered: <b id="sir-r">0</b></span>
+</div>
+<script>
+(function () {
+  const canvas = document.getElementById('sir-sim');
+  const ctx    = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  const N  = 200;   // number of people
+  const R  = 5;     // particle radius
+  const IR = 13;    // infection radius
+  const IP = 0.02;  // infection probability per frame when in range
+  const RT = 300;   // recovery time (frames)
+  const SP = 0.7;   // base speed
+
+  const COL = { S: '#1f77b4', I: '#d62728', R: '#2ca02c' };
+
+  let pts = [], frame = 0, cooling = false;
+
+  function init() {
+    pts = [];
+    for (let i = 0; i < N; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = SP * (0.6 + Math.random() * 0.8);
+      pts.push({ x: R + Math.random() * (W - 2*R),
+                 y: R + Math.random() * (H - 2*R),
+                 vx: Math.cos(a) * s, vy: Math.sin(a) * s,
+                 state: 'S', t: 0 });
+    }
+    pts[0].state = 'I'; pts[0].t = 0;
+    frame = 0; cooling = false;
+  }
+
+  function step() {
+    frame++;
+    // move + bounce
+    for (const p of pts) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < R)   { p.vx =  Math.abs(p.vx); p.x = R; }
+      if (p.x > W-R) { p.vx = -Math.abs(p.vx); p.x = W-R; }
+      if (p.y < R)   { p.vy =  Math.abs(p.vy); p.y = R; }
+      if (p.y > H-R) { p.vy = -Math.abs(p.vy); p.y = H-R; }
+      if (p.state === 'I' && frame - p.t > RT) p.state = 'R';
+    }
+    // infection
+    for (const p of pts) {
+      if (p.state !== 'I') continue;
+      for (const q of pts) {
+        if (q.state !== 'S') continue;
+        if (Math.hypot(p.x - q.x, p.y - q.y) < IR + R && Math.random() < IP) {
+          q.state = 'I'; q.t = frame;
+        }
+      }
+    }
+    // restart when epidemic ends
+    const nI = pts.reduce((n, p) => n + (p.state === 'I' ? 1 : 0), 0);
+    if (nI === 0 && !cooling) {
+      cooling = true;
+      setTimeout(init, 2500);
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of pts) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, R, 0, Math.PI * 2);
+      ctx.fillStyle = COL[p.state];
+      ctx.fill();
+    }
+    let nS = 0, nI = 0, nR = 0;
+    for (const p of pts) {
+      if (p.state === 'S') nS++;
+      else if (p.state === 'I') nI++;
+      else nR++;
+    }
+    document.getElementById('sir-s').textContent = nS;
+    document.getElementById('sir-i').textContent = nI;
+    document.getElementById('sir-r').textContent = nR;
+  }
+
+  let skip = 0;
+  function loop() {
+    skip++;
+    if (skip % 2 === 0) step();
+    draw();
+    requestAnimationFrame(loop);
+  }
+  init(); loop();
+})();
+</script>
 ```
 :::
 ::::

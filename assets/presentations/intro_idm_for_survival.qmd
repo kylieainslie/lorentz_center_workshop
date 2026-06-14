@@ -850,21 +850,48 @@ SA has spent decades solving *exactly* these inference problems for complex time
 
 ## The surveillance gap
 
-Epidemic surveillance **systematically fails** to capture what you most want to know.
+Epidemic surveillance **systematically fails** to capture what we want to observe.
 
-| What we want | What we get | SA analog |
-|:---|:---|:---|
-| When each person was infected | Symptom onset date, or report date | **Censoring / truncation** |
-| How many infections occurred | Confirmed cases — delayed and incomplete | **Missing data** |
-| Incubation period | Exposure window + onset window | **Doubly interval-censored** |
-| Causal effect of vaccination | Observed rates in confounded data | **Confounded time-varying HR** |
-| Cause-specific deaths | Total death counts | **Competing risks, unobserved cause** |
+```{=html}
+<table style="width:100%; font-size:0.9em; border-collapse:collapse;">
+  <thead>
+    <tr class="fragment fade-in" style="border-bottom:2px solid #dee2e6;">
+      <th style="text-align:left; padding:6px 10px; width:30%;">What we want</th>
+      <th style="text-align:left; padding:6px 10px; width:37%;">What we get</th>
+      <th style="text-align:left; padding:6px 10px; width:33%;">SA analog</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="fragment fade-in-then-semi-out" style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:6px 10px;">When did each case occur?</td>
+      <td style="padding:6px 10px;">Report date — days or weeks after onset</td>
+      <td style="padding:6px 10px;"><strong>Right-truncation</strong></td>
+    </tr>
+    <tr class="fragment fade-in-then-semi-out" style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:6px 10px;">When was each person infected?</td>
+      <td style="padding:6px 10px;">Exposure window + symptom onset window</td>
+      <td style="padding:6px 10px;"><strong>Doubly interval-censored</strong></td>
+    </tr>
+    <tr class="fragment fade-in-then-semi-out" style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:6px 10px;">How many infections occurred?</td>
+      <td style="padding:6px 10px;">Confirmed cases — a fraction of the true total</td>
+      <td style="padding:6px 10px;"><strong>Missing data</strong></td>
+    </tr>
+    <tr class="fragment fade-in-then-semi-out" style="border-bottom:1px solid #f0f0f0;">
+      <td style="padding:6px 10px;">Causal effect of vaccination?</td>
+      <td style="padding:6px 10px;">Observed rates in confounded observational data</td>
+      <td style="padding:6px 10px;"><strong>Confounded time-varying HR</strong></td>
+    </tr>
+    <tr class="fragment fade-in-then-semi-out">
+      <td style="padding:6px 10px;">Which deaths were caused by the epidemic?</td>
+      <td style="padding:6px 10px;">Total deaths — cause unattributed</td>
+      <td style="padding:6px 10px;"><strong>Competing risks</strong></td>
+    </tr>
+  </tbody>
+</table>
+```
 
-::: {.fragment}
-Every row is a problem. Every SA analog is a solution. The next slides work through each one.
-:::
-
-## Reporting delays = right-truncation
+## Reporting delays <span style="font-size:0.55em; background:#1f77b4; color:white; padding:3px 10px; border-radius:10px; margin-left:8px; font-weight:normal; vertical-align:middle;">Right-truncation</span>
 
 **The gap:** cases occurred earlier than the data suggests — recent events are systematically missing because reporting takes time.
 
@@ -902,7 +929,7 @@ ggplot(df, aes(day, value, fill = name)) +
 
 This is the same problem as **right-truncation** in follow-up studies. The fix — nowcasting — is a deconvolution of the delay distribution.
 
-## Incubation period = doubly interval-censored
+## Incubation period <span style="font-size:0.55em; background:#1f77b4; color:white; padding:3px 10px; border-radius:10px; margin-left:8px; font-weight:normal; vertical-align:middle;">Doubly interval-censored</span>
 
 **The gap:** we never observe the infection time directly — only a window of possible exposure and a window of possible onset.
 
@@ -936,7 +963,7 @@ ggplot(df) +
 :::
 ::::
 
-## Underreporting and serology
+## Underreporting and serology <span style="font-size:0.55em; background:#1f77b4; color:white; padding:3px 10px; border-radius:10px; margin-left:8px; font-weight:normal; vertical-align:middle;">Missing data</span>
 
 **The gap:** most infections are never confirmed — reported cases are a fraction of what actually occurred.
 
@@ -982,7 +1009,7 @@ ggplot() +
 :::
 ::::
 
-## Vaccine effectiveness is a hazard ratio
+## Vaccine effectiveness <span style="font-size:0.55em; background:#1f77b4; color:white; padding:3px 10px; border-radius:10px; margin-left:8px; font-weight:normal; vertical-align:middle;">Confounded time-varying HR</span>
 
 **The gap:** vaccination is not randomised in the real world — the observed difference between vaccinated and unvaccinated is confounded by who chose to vaccinate and who got infected first.
 
@@ -1009,7 +1036,7 @@ tibble(t, `true VE` = true_VE, `naive estimate (biased)` = naive_VE) |>
 The downward bias comes from **frailty**: high-risk unvaccinated individuals are infected first, leaving a progressively lower-risk comparator group — the same artefact as frailty-induced declining hazards in survival data.
 :::
 
-## Excess mortality
+## Excess mortality <span style="font-size:0.55em; background:#1f77b4; color:white; padding:3px 10px; border-radius:10px; margin-left:8px; font-weight:normal; vertical-align:middle;">Competing risks</span>
 
 **The gap:** cause of death is rarely recorded accurately during an epidemic — we know someone died, but not whether the epidemic was responsible.
 
@@ -1052,13 +1079,13 @@ tibble(week = weeks, baseline, observed) |>
 
 Every data challenge in this section has a name in SA — and a method designed to handle it.
 
-| Data challenge | SA method |
-|:---|:---|
-| Reporting delays | Right-truncation correction, nowcasting |
-| Incubation period | Doubly interval-censored survival |
-| Underreporting | Mixture models on antibody titres |
-| Vaccine effectiveness | Time-varying covariate Cox / Aalen |
-| Excess mortality | Excess hazard, competing risks |
+| Data challenge | SA analog | SA method |
+|:---|:---|:---|
+| Reporting delays | Right-truncation | Truncation correction, nowcasting |
+| Incubation period | Doubly interval-censored | EM algorithm, Bayesian augmentation |
+| Underreporting | Missing data | Mixture models on antibody titres |
+| Vaccine effectiveness | Confounded time-varying HR | Time-varying covariate Cox / Aalen |
+| Excess mortality | Competing risks | Excess hazard, relative survival |
 
 ::: {.fragment}
 Epidemic data is messy. But the mess is structured — and SA has been solving structured mess for decades.

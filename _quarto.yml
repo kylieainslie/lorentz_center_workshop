@@ -38,12 +38,16 @@ website:
           - text: "---"
           - text: "Vignettes"
             href: vignettes/index.qmd
+          - text: "Resources"
+            href: vignettes/resources.qmd
       - text: "Contribute"
         menu:
           - text: "Group Analysis Scripts"
             href: analysis/index.qmd
           - text: "Vignettes"
             href: vignettes/index.qmd
+          - text: "Resources"
+            href: vignettes/resources.qmd
       - text: "Organizers"
         href: organizers.qmd
     right:

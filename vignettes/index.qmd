@@ -5,6 +5,8 @@ subtitle: "Cross-disciplinary worked examples from the workshop"
 
 Vignettes document the analytical approaches developed during the workshop, combining scientific motivation, step-by-step methodology, and fully reproducible R code. Each vignette covers a specific SA–IDM integration example applied to the case study.
 
+See also the [Resources](resources.qmd) page for papers, software, and links shared by participants.
+
 ::: {.callout-note}
 Vignettes will be added here as they are finalized during and after the workshop.
 :::

@@ -61,15 +61,15 @@ Estimate excess mortality and its relation with infection and vaccination.
 
 ## Available Datasets
 
-| Dataset | Contents |
-|---------|----------|
-| `final_demographic_data` | Individual-level data: age, sex, household, classroom, workplace IDs |
-| `final_incidence_data_day40` | Confirmed cases and hospitalisations up to day 40, with symptom onset and reporting times |
-| `final_incidence_data_reduced` | Limited case information covering the remainder of the outbreak |
-| `final_sero_data` | Repeated cross-sectional serological surveys at days 10, 20, 30, and 40; log-transformed IgG antibody titers |
-| `final_contact_tracing_data` | Infector–infectee pairs with symptom onset times and contact time windows (up to day 30) |
-| `final_mortality_data` | Time of death for individuals (cause of death not specified) |
-| `final_vaccination_data` | Time of vaccination for individuals (up to day 90) |
+| Dataset | Contents | |
+|---------|----------|-|
+| `demographic_data` | Individual-level data: age, sex, household, classroom, workplace IDs | [Download](data/demographic_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `incidence_data_day40` | Confirmed cases and hospitalisations up to day 40, with symptom onset and reporting times | [Download](data/incidence_data_day40.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `incidence_data_reduced` | Limited case information covering the remainder of the outbreak | [Download](data/incidence_data_reduced.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `sero_data` | Repeated cross-sectional serological surveys at days 10, 20, 30, and 40; log-transformed IgG antibody titers | [Download](data/sero_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `contact_tracing_data` | Infector–infectee pairs with symptom onset times and contact time windows (up to day 30) | [Download](data/contact_tracing_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `mortality_data` | Time of death for individuals (cause of death not specified) | [Download](data/mortality_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `vaccination_data` | Time of vaccination for individuals (up to day 90) | [Download](data/vaccination_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
 
 ---
 

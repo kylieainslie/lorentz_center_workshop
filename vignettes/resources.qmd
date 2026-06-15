@@ -28,6 +28,19 @@ This page is maintained collectively by participants. To add a resource, edit th
 | Cori et al. | A new framework and software to estimate time-varying reproduction numbers | *American Journal of Epidemiology* (2013) | |
 | Wallinga & Lipsitch | How generation intervals shape the relationship between growth rates and reproductive numbers | *Proc. R. Soc. B* (2007) | |
 
+### Dynamic Survival Analysis
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| KhudaBukhsh et al. | Survival dynamical systems: individual-level survival analysis from population-level epidemic models | *Interface Focus* (2019) | [DOI](https://doi.org/10.1098/rsfs.2019.0048) |
+| di Lauro et al. | Dynamic survival analysis for non-Markovian epidemic models | *arXiv* (2022) | [DOI](https://doi.org/10.48550/arXiv.2202.09948) |
+
+### Pairwise Survival
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| Sharker et al. | Pairwise accelerated failure time regression models for infectious disease transmission in close-contact groups with external sources of infection | *arXiv* (2019) | [DOI](https://doi.org/10.48550/arXiv.1901.04916) |
+
 ---
 
 ## Software

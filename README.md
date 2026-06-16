@@ -92,4 +92,4 @@ Seven simulated epidemic datasets are available, all stored as `.rds` files in t
 
 ## License
 
-Workshop materials are shared for educational use. Please contact the organizers before reusing or adapting content.
+This work is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You are free to share and adapt the materials for any purpose, provided appropriate credit is given.

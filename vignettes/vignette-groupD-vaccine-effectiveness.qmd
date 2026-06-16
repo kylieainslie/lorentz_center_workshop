@@ -37,12 +37,12 @@ where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups
 
 ### Data Needs
 
-- time of vaccination
-- time of infection
-- age
+- time of vaccination [vaccination_data.rds](../data/vaccination_data.rds)
+- time of infection [incidence_data_reduced.rds](../data/incidence_data_reduced.rds)
+- age [demographic_data.rds](../data/demographic_data.rds)
 - contact patterns (external)
-- relative infectiousness of vaccinated people
-- background incidence from pop
+- relative infectiousness of vaccinated people (assumed)
+- background incidence from pop [incidence_data_reduced.rds](../data/incidence_data_reduced.rds)
 
 ## Analysis
 

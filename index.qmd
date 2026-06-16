@@ -17,7 +17,7 @@ Over five days, participants will work in small mixed groups on a shared simulat
 |------|-----------------|
 | [Programme](https://www.lorentzcenter.nl/connecting-survival-analysis-and-infectious-disease-modeling.html) | Full daily schedule on the Lorentz Center website |
 | [Preparation](preparation.qmd) | Pre-course reading, R software setup, and case study data |
-| [Case Study](case-studies.qmd) | Group questions (A–D) and the downloadable case study document |
+| [Case Study](case-studies.qmd) | Group questions (A–E) and the downloadable case study document |
 | [Vignettes](vignettes/index.qmd) | Cross-disciplinary worked examples produced during the workshop |
 | [Organizers](organizers.qmd) | Scientific organizers and their affiliations |
 

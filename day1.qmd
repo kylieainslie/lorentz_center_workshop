@@ -24,12 +24,12 @@ subtitle: "Monday 15 June 2026"
 
 ### Introduction to Survival Analysis
 
-*Slides will be posted here*
+[View slides](assets/presentations/Survival%20analysis.pdf){.btn .btn-outline-primary target="_blank"}
 
 ### Introduction to Infectious Disease Modeling
 
-*Slides will be posted here*
+[View presentation](assets/presentations/intro_idm_for_survival.html){.btn .btn-outline-primary target="_blank"}
 
 ### Case Study Overview
 
-*Background document will be posted here — see also the [Case Study](case-studies.qmd) page*
+[View introduction](assets/case_study/Introduction_case_study.pdf){.btn .btn-outline-primary target="_blank"} — see also the [Case Study](case-studies.qmd) page

@@ -1,0 +1,84 @@
+---
+title: "Resources"
+subtitle: "Papers, software, and links shared by workshop participants"
+---
+
+::: {.callout-note}
+This page is maintained collectively by participants. To add a resource, edit this file on your group branch and open a pull request — or pass the details to an organizer.
+:::
+
+---
+
+## Papers
+
+### Survival Analysis
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| Putter, Fiocco & Geskus | Tutorial in biostatistics: competing risks and multi-state models | *Statistics in Medicine* (2007) | [PDF](../assets/literature/Survival%20analysis/SiM%20-%202006%20-%20Putter%20-%20Tutorial%20in%20biostatistics%20competing%20risks%20and%20multi%E2%80%90state%20models.pdf) |
+| Kragh Andersen et al. | Analysis of time-to-event for observational studies | *Statistics in Medicine* (2020) | [PDF](../assets/literature/Survival%20analysis/Statistics%20in%20Medicine%20-%202020%20-%20Kragh%20Andersen%20-%20Analysis%20of%20time%E2%80%90to%E2%80%90event%20for%20observational%20studies%20Guidance%20to%20the%20use.pdf) |
+| Pohar Perme, de Wreede & Manevski | What is relative survival and what is its role in haematology? | *Best Practice & Research Clinical Haematology* (2023) | [PDF](../assets/literature/Survival%20analysis/PoharPerme_relsurv2023.pdf) |
+
+### Infectious Disease Modelling
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| Grassly & Fraser | Mathematical models of infectious disease transmission | *Nature Reviews Microbiology* (2008) | [PDF](../assets/literature/Infectious%20diseases/Grassly_Nat2008.pdf) |
+| Lipsitch | Challenges of vaccine effectiveness and waning studies | *Clinical Infectious Diseases* (2019) | [PDF](../assets/literature/Infectious%20diseases/Lipsitch%202019.pdf) |
+| Cori et al. | A new framework and software to estimate time-varying reproduction numbers | *American Journal of Epidemiology* (2013) | |
+| Wallinga & Lipsitch | How generation intervals shape the relationship between growth rates and reproductive numbers | *Proc. R. Soc. B* (2007) | |
+
+### Dynamic Survival Analysis
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| KhudaBukhsh et al. | Survival dynamical systems: individual-level survival analysis from population-level epidemic models | *Interface Focus* (2019) | [DOI](https://doi.org/10.1098/rsfs.2019.0048) |
+| di Lauro et al. | Dynamic survival analysis for non-Markovian epidemic models | *arXiv* (2022) | [DOI](https://doi.org/10.48550/arXiv.2202.09948) |
+
+### Pairwise Survival
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| Sharker et al. | Pairwise accelerated failure time regression models for infectious disease transmission in close-contact groups with external sources of infection | *arXiv* (2019) | [DOI](https://doi.org/10.48550/arXiv.1901.04916) |
+
+---
+
+## Software
+
+### Survival Analysis
+
+| Package | Description | Link |
+|---------|-------------|------|
+| `survival` | Core survival analysis: KM, Cox, parametric models | [CRAN](https://cran.r-project.org/package=survival) |
+| `mstate` | Multi-state models and competing risks | [CRAN](https://cran.r-project.org/package=mstate) |
+| `flexsurv` | Flexible parametric survival models | [CRAN](https://cran.r-project.org/package=flexsurv) |
+| `cmprsk` | Competing risks: Fine–Gray model | [CRAN](https://cran.r-project.org/package=cmprsk) |
+| `icenReg` | Interval-censored regression | [CRAN](https://cran.r-project.org/package=icenReg) |
+
+### Infectious Disease Modelling
+
+| Package | Description | Link |
+|---------|-------------|------|
+| `EpiEstim` | Time-varying reproduction number estimation | [CRAN](https://cran.r-project.org/package=EpiEstim) |
+| `EpiNow2` | Nowcasting and Rₜ estimation with delays | [CRAN](https://cran.r-project.org/package=EpiNow2) |
+| `deSolve` | ODE solvers for compartmental models | [CRAN](https://cran.r-project.org/package=deSolve) |
+| `coarseDataTools` | Doubly interval-censored incubation period estimation | [CRAN](https://cran.r-project.org/package=coarseDataTools) |
+| `epinowcast` | Nowcasting with reporting delays | [GitHub](https://github.com/epinowcast/epinowcast) |
+
+---
+
+## Tutorials and Lecture Notes
+
+*Add links to useful tutorials, course notes, or worked examples here.*
+
+---
+
+## Datasets and Data Resources
+
+*Add links to publicly available epidemic datasets or data repositories here.*
+
+---
+
+## Discovered During the Workshop
+
+*Add anything useful that came up during discussions, group work, or presentations.*

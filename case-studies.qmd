@@ -1,13 +1,13 @@
 ---
 title: "Case Study"
-subtitle: "Reconstruction of infection dynamics during a pandemic"
+subtitle: "Reconstruction of infection dynamics during a pandemic using imperfect surveillance and serial serological survey data"
 ---
 
 ## Overview
 
-Participants analyse simulated outbreak data from a pandemic occurring in a closed structured population of 1,000,000 individuals. The simulation uses an individual-based model (HERMES) with an SIRVD structure, incorporating household, school, workplace, and community transmission, as well as vaccination and disease progression.
+Participants analyse simulated outbreak data from a pandemic occurring in a closed structured population of 1,000,000 individuals. The simulation uses an individual-based model (HERMES) with an SIRVD structure, incorporating household, school, workplace, and community transmission, as well as individual-level variation in contact behaviour, vaccination, disease progression, and mortality.
 
-Three datasets are available — incidence surveillance data, serological survey data, and contact tracing data — along with individual-level demographic information. Groups choose one of four questions (A–D) to focus on, drawing on whichever datasets are relevant.
+Several datasets are available representing different sources of information that may be collected during a real-world outbreak. Groups choose one question (A–E) to focus on, drawing on whichever datasets are relevant.
 
 ::: {.callout-important}
 The complete individual-level dataset is not revealed until the end of the workshop.
@@ -15,44 +15,68 @@ The complete individual-level dataset is not revealed until the end of the works
 
 ---
 
-## Case Study Document
+## Case Study Documents
 
-```{=html}
-<div class="doc-cards">
-  <a href="assets/Case_study1.docx" class="doc-card" download>
-    <img src="assets/thumbnails/Case_study1.png" alt="Case Study" onerror="this.src='assets/thumbnails/placeholder.svg'">
-    <div class="doc-card-label">Case Study I</div>
-  </a>
-</div>
-```
+| Document | Description | |
+|----------|-------------|--|
+| Introduction | Overview of the case study, background, and group questions | [Download](assets/case_study/Introduction_case_study.pdf){.btn .btn-sm .btn-outline-primary target="_blank"} |
+| Full case study | Complete case study document with datasets and instructions | [Download](assets/case_study/Case_study_final.docx){.btn .btn-sm .btn-outline-primary download=""} |
 
 ---
 
-## Questions
+## Course of the Outbreak
+
+| Day | Event |
+|-----|-------|
+| 0 | Outbreak begins; unrestricted transmission |
+| 20 | Lockdown imposed — contact reductions at workplaces, schools, and community |
+| 35 | Exit from lockdown — contact probabilities return to pre-lockdown values |
+| 45 | Vaccination campaign begins, with coverage increasing over three cross-sectional time points (each 10 days apart) |
+
+---
+
+## Group Questions
 
 ### Group A — Key Epidemiological Parameters
 
-Estimate the basic and effective reproduction number, recovery time, incubation period, and reporting delay distribution using the incidence and contact tracing data.
+Estimate key epidemiological parameters, including the basic and effective reproduction number, recovery time, incubation period, and reporting delay distribution.
 
 ### Group B — Serial Interval Distribution
 
-Derive the serial interval distribution from the contact tracing data, and use it to inform reproduction number estimation via the Euler-Lotka equation.
+Derive the serial interval distribution from the contact tracing data, and explore how it relates to the generation interval distribution.
 
 ### Group C — Reporting Delays and Underreporting
 
-Estimate the reporting-delay distribution and quantify the degree of underreporting in the available incidence data.
+Estimate the reporting-delay distribution and study underreporting in the incidence data, using serial serological survey data to estimate the proportion of cases that went undetected.
 
 ### Group D — Vaccine Effectiveness
 
-Estimate vaccine effectiveness against infection over time using individual-level vaccination history and breakthrough infection data, and assess the role of susceptible depletion in producing apparent waning.
+Estimate vaccine effectiveness using individual-level vaccination history and breakthrough infection data, and assess the role of susceptible depletion in producing apparent waning.
+
+### Group E — Excess Mortality
+
+Estimate excess mortality and its relation with infection and vaccination.
 
 ---
 
 ## Available Datasets
 
-| Dataset | Contents |
-|---------|----------|
-| `final_pop_data` | Individual-level demographic data (age, sex, household, workplace, vaccination and death times) |
-| `final_incidence_data` | Reported cases with symptom onset and reporting times |
-| `final_sero_data` | Repeated cross-sectional serological survey at days 10, 20, and 30 |
-| `final_contact_tracing_data` | Infector–infectee pairs with symptom onset times (days 10–20) |
+| Dataset | Contents | |
+|---------|----------|-|
+| `demographic_data` | Individual-level data: age, sex, household, classroom, workplace IDs | [Download](data/demographic_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `incidence_data_day40` | Confirmed cases and hospitalisations up to day 40, with symptom onset and reporting times | [Download](data/incidence_data_day40.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `incidence_data_reduced` | Limited case information covering the remainder of the outbreak | [Download](data/incidence_data_reduced.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `sero_data` | Repeated cross-sectional serological surveys at days 10, 20, 30, and 40; log-transformed IgG antibody titers | [Download](data/sero_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `contact_tracing_data` | Infector–infectee pairs with symptom onset times and contact time windows (up to day 30) | [Download](data/contact_tracing_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `mortality_data` | Time of death for individuals (cause of death not specified) | [Download](data/mortality_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+| `vaccination_data` | Time of vaccination for individuals (up to day 90) | [Download](data/vaccination_data.rds){.btn .btn-sm .btn-outline-primary download=""} |
+
+---
+
+## Instructions
+
+Approach your task in two steps:
+
+**Step 1 — Estimands and model specification:** Define the population of interest, treatment conditions (or analogous concept), endpoint, and summary measure. Discuss possible models, their assumptions, what information is missing from the data, and whether it could be retrieved from external sources.
+
+**Step 2 — Implementation:** Implement one or more of the proposed models. Compare to alternatives and consider sensitivity analyses.

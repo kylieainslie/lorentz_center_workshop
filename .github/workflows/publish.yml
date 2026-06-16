@@ -32,6 +32,13 @@ jobs:
           packages: |
             any::knitr
             any::rmarkdown
+            any::svglite
+            any::ggplot2
+            any::dplyr
+            any::tidyr
+            any::deSolve
+            any::patchwork
+            any::scales
 
       - name: Render Quarto project
         run: quarto render

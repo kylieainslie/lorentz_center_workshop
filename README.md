@@ -4,6 +4,8 @@
 
 Website: <https://kylieainslie.github.io/lorentz_center_workshop>
 
+<img src="images/workshop-poster.png" alt="Workshop poster" width="400"/>
+
 ---
 
 ## About

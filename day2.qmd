@@ -25,7 +25,7 @@ subtitle: "Tuesday 16 June 2026"
 
 ### Keynote Slides
 
-*To be posted after the workshop*
+[View slide](assets/presentations/how-to-serial-interval-main/index.qmd)
 
 ### Group Analysis Plans
 

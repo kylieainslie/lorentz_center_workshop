@@ -52,6 +52,16 @@ where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups
 4. Calculate $\bar{I}$
 5. Fit survival model
 
+### Comments from the group
+- target trial emulation?
+- death as a competing risk?
+- how do we let $\gamma(t)$ change over time - we expect it to go up and then go down
+
+
+### Assumptions
+- Assumption 1: no differential under reporting by vac status or over time
+- Assumption 2: 
+
 ## Results
 
 ## Discussion and Limitations

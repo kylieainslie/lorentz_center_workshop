@@ -46,8 +46,10 @@ where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups
 
 ## Analysis
 
-1. Artificially create a cohort
-2. Calculate  background population parameters (e.g., incidence)
+1. Merge relevant data sets 
+2. Artificially create a cohort
+3. Calculate $\bar{I}$
+3. Fit survival model
 
 ## Results
 

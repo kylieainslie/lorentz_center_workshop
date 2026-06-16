@@ -63,6 +63,22 @@ To pick up updates from `main`:
 git merge main
 ```
 
+## Data
+
+Seven simulated epidemic datasets are available, all stored as `.rds` files in the `data/` directory and downloadable from the [Case Study page](https://kylieainslie.github.io/lorentz_center_workshop/case-studies.html).
+
+| File | Contents |
+|------|----------|
+| `demographic_data.rds` | Individual-level age, sex, household, classroom, and workplace IDs |
+| `incidence_data_day40.rds` | Confirmed cases and hospitalisations up to day 40, with symptom onset and reporting times |
+| `incidence_data_reduced.rds` | Limited case information covering the remainder of the outbreak |
+| `sero_data.rds` | Repeated cross-sectional serological surveys at days 10, 20, 30, and 40 |
+| `contact_tracing_data.rds` | Infector–infectee pairs with symptom onset times and contact windows (up to day 30) |
+| `mortality_data.rds` | Time of death for individuals |
+| `vaccination_data.rds` | Time of vaccination for individuals (up to day 90) |
+
+> The complete individual-level dataset is not revealed until the end of the workshop.
+
 ## Scientific Organizers
 
 | Name | Affiliation |

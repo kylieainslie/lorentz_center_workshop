@@ -63,23 +63,6 @@ To pick up updates from `main`:
 git merge main
 ```
 
-## Building the Website
-
-The site is built with [Quarto](https://quarto.org). To render locally:
-
-```r
-# In R
-quarto::quarto_render()
-```
-
-or from the terminal:
-
-```bash
-quarto render
-```
-
-Output goes to `docs/`. The site is published via GitHub Pages from the `docs/` folder on `main`.
-
 ## Scientific Organizers
 
 | Name | Affiliation |

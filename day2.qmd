@@ -25,7 +25,9 @@ subtitle: "Tuesday 16 June 2026"
 
 ### Keynote Slides
 
-[View slide](assets/presentations/how-to-serial-interval-main/index.qmd)
+Sam Abbott (LSHTM) - How to serial interval
+[View slide](assets/presentations/how-to-serial-interval.html)
+[Git repo](https://github.com/seabbs/how-to-serial-interval)
 
 ### Group Analysis Plans
 

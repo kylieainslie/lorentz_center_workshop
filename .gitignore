@@ -7,3 +7,4 @@
 *.RData
 
 **/*.quarto_ipynb
+.Rproj.user

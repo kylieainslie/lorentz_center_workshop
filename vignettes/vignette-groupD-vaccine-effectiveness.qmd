@@ -1,0 +1,26 @@
+
+
+---
+title: "Not all exposures are created equal"
+author: "Kylie Ainslie, Nathalie Dean, Hein Putter, David Price, Fanny Bergström"
+date: today
+---
+
+## Scientific Background
+
+## Methods
+
+## Data
+
+## Analysis
+
+## Results
+
+## Discussion and Limitations
+
+## Session Info
+
+```{r}
+sessionInfo()
+```
+

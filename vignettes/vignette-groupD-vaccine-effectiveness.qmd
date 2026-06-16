@@ -8,7 +8,7 @@ date: today
 
 ## Project Aim
 In this project, we aim to improve the statistical efficiency of VE estimation by leveraging data on the estimated force of infection experienced by different subpopulations.
-Consider subpopulations k=1,…,K. In mechanistic models, the force of infection experienced by subpopulation k is a function of the sum of the contact rates and numbers infected.
+Consider subpopulations $k=1,\dots,K$. In mechanistic models, the force of infection experienced by subpopulation k is a function of the sum of the contact rates and numbers infected:
 
 $$\lambda_k(t) = \sum_{j=1}^K c_{jk}I_j(t)$$
 
@@ -37,18 +37,17 @@ where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups
 
 ### Data Needs
 
-- time of vaccination [vaccination_data.rds](data/vaccination_data.rds)
-- time of infection [incidence_data_reduced.rds](data/incidence_data_reduced.rds)
-- age [demographic_data.rds](data/demographic_data.rds)
+- time of vaccination
+- time of infection
+- age
 - contact patterns (external)
-- relative infectiousness of vaccinated people (assumed)
-- background incidence from pop [incidence_data_reduced.rds](data/incidence_data_reduced.rds)
+- relative infectiousness of vaccinated people
+- background incidence from pop
 
 ## Analysis
 
 1. Artificially create a cohort
-2. Calculate $\bar{I}$
-
+2. Calculate  background population parameters (e.g., incidence)
 
 ## Results
 

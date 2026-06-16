@@ -14,9 +14,18 @@ date: today
 
 ## Methods
 
-$$h(t, t_c) = h_0(t, t_c)\exp(\beta(t)V + \dots)$$
+\begin{align}
+h(t, t_c) &= h_0(t, t_c)\exp(\gamma(t)V + \dots) \\
+          &= h_0(t_c)\exp(\gamma(t)V + \dots) \\
+          &= \gamma\bar{I}(t_c)\exp(\gamma(t)V + \dots)
+          $= \exp(\gamma(t)V + \log(\beta\bar{I}(t_c)) + \dots)
 
-where $$t$$ is calendar time and $$t_c$$ is calendar time.
+\end{align}
+
+where $t$ is calendar time, $t_c$ is calendar time, $\bar{I}$ is a function of infectiousness in the population. 
+
+$$\beta\bar{I}(t_c) = \beta\sum_a'\left(I_u^{a'}(t_c-1) + (1-\theta(t))I_v^{a'}(t-1) \right) \frac{C_{a'a}}{N_a} $$
+where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups. The term $C_{a'a}$ represents the contact matrix between age group $a'$ and subgroup $a$, and $N_a$ is the population size of subgroup $a$. 
 
 ## Data
 

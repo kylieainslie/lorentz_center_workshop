@@ -1,0 +1,107 @@
+---
+title: "Generation interval from contact tracing"
+format:
+  html:
+    code-fold: true
+    code-summary: "show code"
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+---
+
+Both ends of a generation interval are infection times, and here each is known
+only to within a contact window. So both ends are interval censored: the
+infector's infection (primary) and the infectee's (secondary). `primarycensored`
+fits the delay by integrating over both windows. Using infection times rather
+than onsets makes this a generation interval, not a serial interval.
+
+The pairs come from tracing back from cases to their infectors, so it is a
+backward sample. In a growing epidemic that contracts the interval: recent
+infectors are more numerous, so the gap to them looks short. Weighting each pair
+by `exp(r·τ)` undoes the tilt and recovers a forward, roughly intrinsic interval.
+
+```{r}
+library(dplyr)
+library(primarycensored)
+library(ggplot2)
+
+ct    <- readRDS(here::here("data", "contact_tracing_data.rds"))
+inc40 <- readRDS(here::here("data", "incidence_data_day40.rds"))
+
+# keep pairs where the infector was also traced, so both infection windows exist
+windows <- ct |> distinct(ind_id, .keep_all = TRUE) |>
+  select(ind_id, lower = time_of_contact_lower, upper = time_of_contact_upper)
+gi <- ct |>
+  select(infector = reported_contact,
+         inf_lower = time_of_contact_lower, inf_upper = time_of_contact_upper) |>
+  inner_join(windows, by = c("infector" = "ind_id")) |>
+  mutate(pwindow = (upper - lower) + 1,         # infector window (primary)
+         left    = pmax(inf_lower - lower, 0),  # infectee window (secondary)
+         right   = (inf_upper + 1) - lower,
+         swindow = right - pmax(inf_lower - lower, 0),
+         tau_mid = ((inf_lower + inf_upper) / 2) - ((lower + upper) / 2),
+         .keep = "none")
+
+# doubly interval-censored gamma; weights turn the backward fit into a forward one
+fit <- function(w) {
+  nll <- function(p) -sum(w / mean(w) * vapply(seq_len(nrow(gi)), \(i)
+    dprimarycensored(gi$left[i], \(q) pgamma(q, exp(p[1]), exp(p[2])),
+      pwindow = gi$pwindow[i], swindow = gi$swindow[i], log = TRUE), numeric(1)))
+  o <- optim(c(log(2), log(.5)), nll, hessian = TRUE, method = "BFGS")
+  list(par = o$par, vcov = solve(o$hessian))
+}
+# mean and sd, with CIs from sampling the (log) parameters
+set.seed(1)
+ci <- function(f) {
+  d <- exp(sweep(matrix(rnorm(8000), ncol = 2) %*% chol(f$vcov), 2, f$par, "+"))
+  list(mean = d[, 1] / d[, 2], sd = sqrt(d[, 1]) / d[, 2])
+}
+```
+
+Growth comes from the rising phase of the onset curve, as the slope of a
+quasi-Poisson GLM (quasi-Poisson because the daily counts are badly overdispersed).
+
+```{r}
+m  <- glm(n ~ time_of_symptom_onset, quasipoisson,
+          count(filter(inc40, between(time_of_symptom_onset, 8, 26)), time_of_symptom_onset))
+r  <- unname(coef(m)[2]); r_se <- sqrt(vcov(m)[2, 2])
+sprintf("growth rate r = %.2f /day (95%% CI %.2f, %.2f)", r, r - 1.96 * r_se, r + 1.96 * r_se)
+```
+
+```{r}
+draws <- list(
+  "backward (observed)"       = ci(fit(rep(1, nrow(gi)))),
+  "forward (growth-weighted)" = ci(fit(exp(r * gi$tau_mid)))
+)
+fmt <- \(x) sprintf("%.1f (%.1f, %.1f)", median(x), quantile(x, .025), quantile(x, .975))
+purrr::imap_dfr(draws, \(d, nm) tibble::tibble(
+  estimand = nm, `mean (days)` = fmt(d$mean), `sd (days)` = fmt(d$sd))) |>
+  knitr::kable()
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3.5
+# density with a 95% band per estimand (gamma recovered from the mean/sd draws)
+grid <- seq(0, 14, 0.1)
+band <- purrr::imap_dfr(draws, function(d, est) {
+  i  <- sample(length(d$mean), 600)
+  sh <- (d$mean[i] / d$sd[i])^2; rt <- d$mean[i] / d$sd[i]^2
+  dn <- vapply(seq_along(i), \(j) dgamma(grid, sh[j], rt[j]), numeric(length(grid)))
+  tibble::tibble(t = grid, estimand = est, med = apply(dn, 1, median),
+                 lo = apply(dn, 1, quantile, .025), hi = apply(dn, 1, quantile, .975))
+})
+ggplot(band, aes(t, med, colour = estimand, fill = estimand)) +
+  geom_histogram(data = tibble::tibble(d = gi$tau_mid), aes(d, after_stat(density)),
+                 inherit.aes = FALSE, binwidth = 1, fill = "grey88", colour = "white") +
+  geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.15, colour = NA) +
+  geom_line(linewidth = 1) +
+  labs(x = "generation interval (days)", y = "density", colour = NULL, fill = NULL) +
+  theme_minimal() + theme(legend.position = "bottom")
+```
+
+The backward interval is about 3 days; undoing the tilt moves it to about 5. `r`
+is tight enough (above) that propagating its uncertainty barely changes the
+forward CI, so the band is the fit uncertainty at the point `r`, and most of the
+width is the 68 pairs.

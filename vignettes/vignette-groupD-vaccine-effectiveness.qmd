@@ -8,7 +8,15 @@ date: today
 
 ## Scientific Background
 
+### Literature
+
+- Moore *et al.* 2023 *Epidemics* doi: [https://doi.org/10.1016/j.epidem.2024.100768](https://doi.org/10.1016/j.epidem.2024.100768)
+
 ## Methods
+
+$$h(t, t_c) = h_0(t, t_c)\exp(\beta(t)V + \dots)$$
+
+where $$t$$ is calendar time and $$t_c$$ is calendar time.
 
 ## Data
 

@@ -3,17 +3,73 @@ title: "Group Analysis Scripts"
 subtitle: "Working code from workshop groups"
 ---
 
-Each group has a subfolder for their analysis scripts.
+Each group has a subfolder for their analysis scripts. Scripts will appear here as groups push their work during the workshop.
 
 | Group | Question | Folder |
 |-------|----------|--------|
-| Group A | Key epidemiological parameters | `group-A/` |
-| Group B | Serial interval distribution | `group-B/` |
-| Group C | Reporting delays and underreporting | `group-C/` |
-| Group D | Vaccine effectiveness | `group-D/` |
+| Group A | Key epidemiological parameters | `analysis/group-A/` |
+| Group B | Serial interval distribution | `analysis/group-B/` |
+| Group C | Reporting delays and underreporting | `analysis/group-C/` |
+| Group D | Vaccine effectiveness | `analysis/group-D/` |
+| Group E | Excess mortality | `analysis/group-E/` |
 
-## Guidelines
+---
 
-- Use descriptive filenames prefixed with a number to indicate order (e.g. `01_explore.R`, `02_analysis.R`)
-- Commit regularly so group members have access to the latest version
-- Save slow-running outputs as `.rds` files and commit those too
+## Contributing Your Scripts
+
+### First time setup
+
+You will need a [GitHub account](https://github.com) and [Git](https://git-scm.com/downloads) installed. Do this before the workshop starts.
+
+Clone the repository:
+
+```bash
+git clone https://github.com/kylieainslie/lorentz_center_workshop.git
+cd lorentz_center_workshop
+```
+
+Switch to your group's branch — replace `A` with your group letter (`A`, `B`, `C`, `D`, or `E`):
+
+```bash
+git checkout group-A
+```
+
+The five branches (`group-A`, `group-B`, `group-C`, `group-D`, `group-E`) already exist on GitHub. Do not create a new branch.
+
+### Adding your scripts
+
+Put your scripts in your group's folder, e.g. `analysis/group-A/`. Use numbered filenames to indicate order:
+
+```
+analysis/group-A/
+├── 01_explore_data.R
+├── 02_analysis_plan.md
+└── 03_main_analysis.R
+```
+
+### Saving and sharing your work
+
+After adding or editing scripts, commit and push to your group's branch:
+
+```bash
+git add analysis/group-A/
+git commit -m "Add initial data exploration"
+git push origin group-A
+```
+
+Push regularly so your group members always have the latest version.
+
+### Pulling updates from teammates
+
+If a teammate has pushed changes, pull them before you start working:
+
+```bash
+git pull origin group-A
+```
+
+### Returning to the workshop repo on subsequent days
+
+```bash
+git checkout group-A
+git pull origin group-A
+```

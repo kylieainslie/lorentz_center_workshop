@@ -1,0 +1,125 @@
+# Representing composed distributions
+
+## Why?
+
+:::: {.columns}
+::: {.column width="60%"}
+- As we have seen, many epidemiological delays can be thought of as
+  **composed** of delays between events
+- The serial interval is a generation time plus an incubation
+  difference, observed through primary and secondary censoring and
+  truncation
+- The same few biases recur, in different combinations
+- We want to write a delay down once, from reusable, tested parts, and
+  reuse it across models
+:::
+::: {.column width="40%"}
+::: {.callout-note}
+A longer take on this idea of building models from parts:
+[Juniper seminar (YouTube)](https://www.youtube.com/watch?v=FQYOqGnbJWA)
+:::
+:::
+::::
+
+## CensoredDistributions.jl
+
+:::: {.columns}
+::: {.column width="44%"}
+- A Julia package, in effect a version of `primarycensored`
+- Censoring and truncation are just **wrappers** around a delay
+- The result is a distribution you can `pdf`, `rand`, and **fit with
+  Turing.jl**
+:::
+::: {.column width="56%"}
+```julia
+using CensoredDistributions, Distributions, Turing
+
+# a censored, truncated delay
+d = double_interval_censored(
+    Gamma(2, 3); upper = 15, interval = 1)
+
+# fit it with Turing.jl
+@model function fit(y, w)
+    α ~ truncated(Normal(2, 1), 0, Inf)
+    θ ~ truncated(Normal(3, 1), 0, Inf)
+    y ~ weight(double_interval_censored(
+        Gamma(α, θ); upper = 15, interval = 1), w)
+end
+```
+
+::: {.attribution}
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+:::
+:::
+::::
+
+## Building distributions from parts
+
+:::: {.columns}
+::: {.column width="42%"}
+- In development: compose the delays between events
+- Additive chains, competing outcomes by racing hazards, or a data
+  field that selects the sub-model
+- Then wrap the whole delay in the observation model
+- Covariates can modify it — on the **hazard scale**, or within
+  individual delay **leaves**
+:::
+::: {.column width="58%"}
+```julia
+# build delays between events from parts
+si = sequential(generation_time, incubation)
+
+# competing outcomes by probability (a CFR) ...
+resolve = competing(:death => (death, cfr),
+                   :discharge => (discharge, 1 - cfr))
+# ... or by racing hazards:
+# competing(:death => death, :discharge => discharge)
+
+# a record field selects the sub-model
+delay = selecting(:index => incubation, :sourced => si)
+
+# assemble the record, then observe it through
+# interval censoring + truncation
+tree = compose((delay = delay, resolution = resolve))
+obs  = double_interval_censored(tree; interval = 1)
+```
+
+::: {.attribution}
+In-flight composer work:
+[CensoredDistributions.jl#363](https://github.com/EpiAware/CensoredDistributions.jl/pull/363)
+:::
+:::
+::::
+
+## Backing different model types
+
+:::: {.columns}
+::: {.column width="42%"}
+- Composed delays back different model types
+- Individual likelihoods; counts via convolution or reporting hazards;
+  or lowered onto a reaction network for a mechanistic model
+:::
+::: {.column width="58%"}
+```julia
+# individual level: likelihood / simulate
+logpdf(d, t);   rand(d)
+
+# counts: convolve with incidence (EpiNow2)
+expected = convolve(infections, d)
+
+# or as reporting hazards (epinowcast)
+h = delay_hazard(pmf)
+
+# mechanistic: lower the delay onto a transition
+# of a Catalyst reaction network (linear chain)
+using Catalyst
+chain = linear_chain_reactions(d, I, R)
+```
+
+::: {.callout-note}
+Simulation and `logpdf` for individual data, convolution for counts, or
+— via the **linear-chain trick** — a Catalyst reaction network for a
+compartmental model.
+:::
+:::
+::::

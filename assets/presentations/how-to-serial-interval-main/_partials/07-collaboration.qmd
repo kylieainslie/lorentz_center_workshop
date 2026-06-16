@@ -1,0 +1,106 @@
+# How can you help me?
+
+## Ask 1: review my hazard-based delay estimator
+
+I have an open PR in `primarycensored` that adds non-parametric, hazard-based delay
+estimation alongside the parametric families.
+
+- It estimates the delay PMF on fixed bins, either directly (a simplex) or through
+  per-bin discrete-time hazards, with a random-walk or IID random-effects prior
+  on `logit(hazard)`.
+- Hazards and PMF are interconvertible, and both fit through the same
+  doubly-censored, right-truncated likelihood as the parametric distributions.
+- It drops the parametric-shape assumption while still handling the
+  censoring and truncation.
+
+::: {.callout-note}
+## The ask
+[primarycensored#312](https://github.com/epinowcast/primarycensored/pull/312):
+is the discrete-time hazard formulation right, and how should we
+modellers handle a non-parametric delay estimate for onward use?
+We have little guidance on reusing one.
+:::
+
+## Ask 2: pairwise / contact-interval survival models
+
+I want to push Eben Kenah's pairwise survival idea further and connect it to the
+event-time view of serial and generation intervals.
+
+- [Kenah (2011)](https://doi.org/10.1093/biostatistics/kxq068) treats the contact
+  interval as a time-to-event variable and does survival analysis on who infected whom.
+- That feels like the right language for the dependent point process behind generation
+  and serial intervals.
+- The transmission data are interval-censored on both ends, and the at-risk set changes
+  as susceptibles are depleted.
+
+::: {.callout-note}
+## The ask
+How do we bring contact-interval survival machinery to dependent transmission data,
+and where does it break when start times are unobserved and the risk set is itself
+part of what we are estimating?
+:::
+
+## Ask 3: why are you not anxious about double interval censoring?
+
+We spend a lot of effort on primary plus secondary interval censoring, dynamical bias,
+and real-time truncation. You handle interval censoring routinely and seem far less worried.
+
+- Are we over-engineering this, and what is genuinely different on our side?
+- My guesses: the **start time is itself censored**, and the events are **dependent
+  through transmission** — you estimate in real time too, so it is probably not that.
+
+## Ask 4: what would a survival-time model for outbreak size look like?
+
+:::: {.columns}
+::: {.column width="30%"}
+- We estimate the **current size** of the 2026 DRC Bundibugyo (Ebola)
+  outbreak in real time — not a delay, but the same toolkit
+- A joint Bayesian renewal model over all these streams, with
+  ascertainment; committed deaths give a lower bound
+
+::: {.callout-note}
+## The ask
+What would a survival / time-to-event model look like? Where would
+competing-risks or multi-state thinking help?
+:::
+:::
+::: {.column width="70%"}
+![](figures/fig-bvd-model.png){width="100%"}
+
+::: {.attribution}
+Model:
+[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize)
+(Abbott, Sherratt, Brand, Funk); diagram this talk
+:::
+:::
+::::
+
+## Ask 5: which delay tool, when — or none of them?
+
+- We have a growing toolbox: `epidist`, `EpiNow2`, `epinowcast`, and the
+  composed-distribution machinery
+- We do not have good guidance on **which to use when** — individual
+  versus population level, parametric versus not
+- Or maybe none of them, and the right answer is a **time-to-event /
+  survival model** instead
+
+::: {.callout-note}
+## The ask
+Help us match tool to question — and tell us where a survival-analysis
+model would simply be the better choice.
+:::
+
+## Ask 6: how should the reporting advice adapt for survival methods?
+
+- [Charniga et al. (2024)](https://doi.org/10.1371/journal.pcbi.1012520)
+  give best-practice advice for estimating and reporting delay
+  distributions, written largely from the modelling side
+- Survival analysis brings Turnbull, interval-censored likelihoods,
+  competing risks, and frailty — with their own reporting conventions
+
+::: {.callout-note}
+## The ask
+How should that advice be **updated** to fold in survival-analysis
+methods? Help us write the next version of the checklist — one that
+speaks both languages.
+:::

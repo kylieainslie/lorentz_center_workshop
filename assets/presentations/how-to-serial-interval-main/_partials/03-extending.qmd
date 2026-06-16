@@ -1,0 +1,120 @@
+# The same machinery, in software
+
+## What `primarycensored` solves
+
+:::: {.columns}
+::: {.column width="55%"}
+- Really a **wrapper** for any delay distribution: it adds the primary
+  and secondary censoring and truncation around whatever family you
+  choose
+- **Analytic** primary-censored CDFs for gamma, lognormal, and Weibull
+  with a uniform primary; numerical integration otherwise
+- Signed support (normal, logistic, Laplace, Cauchy, Gumbel) for
+  delays that can be negative
+- And a **non-parametric, hazard-based** estimator
+  ([#312](https://github.com/epinowcast/primarycensored/pull/312)) — it
+  needs an eye on it, and is not clearly a good idea: for onward reuse
+  we have little guidance yet on how to estimate or report these
+:::
+::: {.column width="45%"}
+![](figures/pc-pmf-lognormal-1.png){width="100%"}
+
+::: {.attribution}
+Empirical (censored) samples vs the analytic PMF —
+[primarycensored](https://primarycensored.epinowcast.org/) · estimator
+[#312](https://github.com/epinowcast/primarycensored/pull/312)
+:::
+:::
+::::
+
+## Tied into the ecosystem
+
+:::: {.columns}
+::: {.column width="50%"}
+- The same delay $f$ enters three of our tools in different forms:
+  - **`epidist`** — individual-level delays from line lists
+  - **`EpiNow2`** — delays in `estimate_dist`, `estimate_truncation`,
+    `estimate_infections`
+  - **`epinowcast`** — population-level nowcasting: $f$'s **hazard
+    modified** over time, or straight discrete-time hazards; with
+    uncertainty on the counts
+- How to choose between them is an open question — is there guidance in
+  the time-to-event literature?
+:::
+::: {.column width="50%"}
+`epidist` — individual likelihood
+$$ \textstyle\prod_i f(t_i) $$
+
+`EpiNow2` — convolve incidence
+$$ C_t = \sum_{\tau} f(\tau)\, I_{t-\tau} $$
+
+`epinowcast` — $f$'s hazard, modified (or free)
+$$ \operatorname{logit} h_d = \operatorname{logit} h_d^{f} + \text{effects} $$
+$$ \mathbb{E}[n_{t,d}] = \lambda_t\, h_d\textstyle\prod_{d'<d}(1-h_{d'}) $$
+
+::: {.attribution}
+[epidist](https://epidist.epinowcast.org/) ·
+[EpiNow2](https://epiforecasts.io/EpiNow2/) ·
+[epinowcast](https://package.epinowcast.org/)
+:::
+:::
+::::
+
+# Ongoing work
+
+## Point-source outbreaks are the same problem
+
+:::: {.columns}
+::: {.column width="40%"}
+- A common-source outbreak shares one exposure window
+- The distribution of exposure times within the source may itself
+  differ — it need not be uniform
+- Estimate the incubation period from onset dates; the same censoring
+  and dynamical-bias issues apply
+- A Legionnaires' model in use by UKHSA does this, deconvolving onsets
+  into a release time and an incubation period
+  ([Egan & Hall 2011](https://doi.org/10.1097/EDE.0b013e31820937c6))
+- It extends naturally to **multiple candidate sources**
+:::
+::: {.column width="60%"}
+![](figures/fig-pointsource.png){width="100%"}
+
+::: {.attribution}
+Diagram: this talk, after the point-source incubation idea of
+[Egan & Hall (2011)](https://doi.org/10.1097/EDE.0b013e31820937c6)
+:::
+:::
+::::
+
+## What is coming: more windows, more families
+
+:::: {.columns}
+::: {.column width="52%"}
+- The censored CDF is the delay density $f$ convolved with the
+  primary-event window $H_w$:
+
+$$ F_{\mathrm{cens}}(q) = \int_0^q H_w(q-u)\, f(u)\, du $$
+
+- Expanding the window as exponentials reduces this to **Laplace-type
+  transforms** $T_f(\xi;\tau)=\int_0^\tau e^{\xi u} f(u)\,du$ of $f$:
+
+$$ F_{\mathrm{cens}}(q) = \sum_k a_k(q)\, T_f(\xi_k; q) $$
+
+- The **window** (uniform, exponentially tilted, logistic, Gumbel)
+  sets the $a_k, \xi_k$; the **delay family** sets whether $T_f$ is
+  analytic
+:::
+::: {.column width="48%"}
+| Delay family | Transform |
+|---|---|
+| exponential, gamma, inverse Gaussian | analytic |
+| Weibull, generalised gamma, Gompertz, log-logistic, Burr | semi-analytic |
+| lognormal | numerical |
+
+::: {.attribution}
+Transform extension to non-uniform windows: Jamieson et al. (working
+paper); logistic and Gumbel windows after
+[Egan & Hall (2011)](https://doi.org/10.1097/EDE.0b013e31820937c6)
+:::
+:::
+::::

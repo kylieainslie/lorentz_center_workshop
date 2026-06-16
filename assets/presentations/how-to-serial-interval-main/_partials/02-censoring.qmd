@@ -1,0 +1,140 @@
+# A delay seen through censoring and truncation
+
+## How do we currently suggest people estimate and report a delay distribution?
+
+:::: {.columns}
+::: {.column width="40%"}
+- Adjust for **within-interval censoring of both events** (always)
+- **Right truncation** is the correction for dynamical
+  (epidemic-phase) bias
+- Fit **several distributions** and compare with model-fit statistics
+- Report uncertainty, and share de-identified line lists and code
+
+::: {.callout-note}
+Later, the Andes-virus analysis works through a version of this
+checklist:
+[andv-linelist-analysis](https://epiforecasts.io/andv-linelist-analysis/dev/charniga).
+:::
+
+::: {.attribution}
+Flowchart: Fig 3 of
+[Charniga et al. (2024)](https://doi.org/10.1371/journal.pcbi.1012520),
+PLOS Comput Biol, CC-BY 4.0
+:::
+:::
+::: {.column width="60%"}
+![](figures/fig-charniga-flowchart.png){height="860px"}
+:::
+::::
+
+## One delay, built up in three steps
+
+:::: {.columns}
+::: {.column width="40%"}
+- For now treat the serial interval as a single **event-to-event**
+  delay, ignoring that it is itself composed — we return to that later
+- Daily or weekly data put both the primary (infector) and secondary
+  (infectee) events in **windows**, not at points
+- In real time, long delays have not happened yet
+- Build the observation model up in three steps:
+  1. primary interval censoring
+  2. secondary interval censoring
+  3. right truncation
+:::
+::: {.column width="60%"}
+![](figures/fig-double-censoring.png){width="100%"}
+
+::: {.attribution}
+Diagram: this talk
+:::
+:::
+::::
+
+## 1. Primary interval censoring
+
+:::: {.columns}
+::: {.column width="40%"}
+- The infector's event falls in a window $[0, w_P]$
+- It need not be uniform, but a uniform primary is a fair assumption,
+  especially when the window is short
+- Mix the delay over where the event sat in the window — a convolution
+  on the CDF
+:::
+::: {.column width="60%"}
+![](figures/fig-primary-censoring.png){width="100%"}
+
+$$
+F_{\mathrm{PEC}}(t) = \int_{0}^{w_P} g(\tau)\, F(t - \tau)\, d\tau
+$$
+
+::: {.attribution}
+Maths after
+[primarycensored](https://primarycensored.epinowcast.org/)
+:::
+:::
+::::
+
+::: {.callout-note}
+We can solve this integral, and have done so analytically for common
+families: gamma, lognormal, and Weibull with a uniform primary window.
+:::
+
+## 2. Secondary interval censoring
+
+:::: {.columns}
+::: {.column width="40%"}
+- The infectee's onset is also recorded to the day
+- The probability in a daily bin is a difference of the
+  primary-censored CDF
+- This doubles as a **probability mass function** for a continuous
+  delay in daily discrete-time models (`EpiNow2`, `EpiEstim`,
+  `epinowcast`)
+:::
+::: {.column width="60%"}
+![](figures/fig-secondary-censoring.png){width="100%"}
+
+$$
+\Pr\!\big(T \in [n, n + w_S]\big)
+  = F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)
+$$
+
+::: {.attribution}
+[primarycensored](https://primarycensored.epinowcast.org/) ·
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+:::
+:::
+::::
+
+::: {.callout-note}
+In the past this was often written as a double integral, which is
+typically more complicated to evaluate.
+:::
+
+## 3. Right truncation
+
+:::: {.columns}
+::: {.column width="40%"}
+- In real time we only see a pair if the secondary event is before the
+  cutoff $C$
+- Condition on being observed: divide by the CDF at the truncation
+  horizon
+- Short delays are over-represented early in an epidemic
+:::
+::: {.column width="60%"}
+![](figures/fig-truncation.png){width="100%"}
+
+$$
+L^{\mathrm{RT}}
+  = \frac{F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)}
+         {F_{\mathrm{PEC}}(C - P)}
+$$
+
+::: {.attribution}
+Diagram: this talk
+:::
+:::
+::::
+
+::: {.callout-note}
+Each step is a different bias adjustment, composed together.
+:::

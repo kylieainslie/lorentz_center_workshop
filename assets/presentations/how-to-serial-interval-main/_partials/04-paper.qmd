@@ -1,0 +1,224 @@
+# Back to the serial interval
+
+## Now think of it as a composed delay
+
+:::: {.columns}
+::: {.column width="38%"}
+- We treated the SI as one event-to-event delay; it can be thought of
+  as a **composition** of delays
+- Onsets are what we see; infection and transmission are latent
+
+$$ GT = LP + U $$
+$$ SI = GT + (IP_2 - IP_1) $$
+
+- The composition is where the biology can enter
+:::
+::: {.column width="62%"}
+![](figures/fig-gt-vs-si-timeline.png){width="100%"}
+
+::: {.attribution}
+Source: within-host informed event-time framework (Jamieson et al.,
+working paper)
+:::
+:::
+::::
+
+# A within-host informed approach
+
+## One within-host model coupling the delays
+
+:::: {.columns}
+::: {.column width="38%"}
+- A shared pathogen load $V(t)$ in the infector drives three event
+  hazards
+  - infectiousness onset $h_I$
+  - symptom onset $h_S$
+  - transmission $p_{\text{trans}}$
+- So $LP$, $U$, and $IP_1$ are **coupled** by the viral load, not
+  separate marginals
+- The delays stay mutually consistent, and the parameters keep a
+  biological meaning
+- Builds on the within-host to Burr-distribution idea of
+  [Jamieson & Hall (2024)](https://doi.org/10.1371/journal.pcbi.1012041)
+:::
+::: {.column width="62%"}
+![](figures/fig-event-time-dag.png){width="100%"}
+
+::: {.attribution}
+Framework: Jamieson et al. (working paper). Within-host idea:
+[Jamieson et al. (2024)](https://doi.org/10.1371/journal.pcbi.1012041)
+:::
+:::
+::::
+
+## The viral-load trajectory
+
+:::: {.columns}
+::: {.column width="42%"}
+- A rise-and-fall pathogen load with four interpretable parameters
+  - growth rate $r$
+  - peak time $m$
+  - decay rate $d$
+  - transition sharpness $\kappa$
+
+$$
+V(t) = A\, e^{rt}
+\left\{1 + \tfrac{r}{d}\,e^{\kappa(t-m)}\right\}^{-(r+d)/\kappa}
+$$
+
+- In reality it is often more complex, with substantial individual-level
+  variation
+  ([Russell et al. 2024](https://doi.org/10.1371/journal.pbio.3002463))
+:::
+::: {.column width="58%"}
+![](figures/pathogen_load_varying_kappa_peak_at_m.png){width="100%"}
+
+::: {.attribution}
+Framework: Jamieson et al. (working paper). Trajectory form follows
+[Ke et al. 2021](https://doi.org/10.1073/pnas.2111477118),
+[Puhach et al. 2023](https://doi.org/10.1038/s41579-022-00822-w)
+:::
+:::
+::::
+
+## Per-event hazards turn load into delays
+
+:::: {.columns}
+::: {.column width="50%"}
+- Each event is a stochastic activation with a hazard set by the load
+
+$$
+F_Z(t) = 1 - \exp\!\left\{-\!\int_0^t h_Z(s)\,ds\right\}
+$$
+
+- $V(t)$ is shaped by $r, m, d, \kappa$; a per-event scale $\beta_Z$
+  sets how strongly each event responds to load
+:::
+::: {.column width="50%"}
+Each delay reads off the same $V(t)$:
+
+infectiousness onset $\to LP$
+$$ h_I(t) = \beta_I\, V(t) $$
+
+symptom onset $\to IP$
+$$ h_S(t) = \beta_S\, V(t) $$
+
+transmission $\to U$ (so $GT = LP + U$)
+$$ \lambda_T(u \mid LP{=}\ell) = c\,p_{\text{trans}} = c\,\beta_T\, V(\ell + u) $$
+:::
+::::
+
+::: {.callout-note}
+**Why these forms?** Each rate is proportional to load as a parsimonious
+baseline; other activation functions give other families ($V(t)\,g(t)$
+gives the Burr).
+
+- $h_S = \beta_S V$: no fixed symptom threshold, so a stochastic
+  activation
+- $\lambda_T = c\,p_{\text{trans}}$ with $p_{\text{trans}}=\beta_T V$: a
+  **contact** (rate $c$) and infection given contact, only after
+  infectiousness — so $U$ is timed from $LP$
+- $\beta_I, \beta_S$ may be related if symptoms track infectiousness
+:::
+
+::: {.attribution}
+Framework: Jamieson et al. (working paper)
+:::
+
+## SARS-CoV-2: shorter generation time for Omicron
+
+:::: {.columns}
+::: {.column width="40%"}
+- Dutch household transmission pairs, Delta replaced by Omicron
+- Shorter mean generation time for Omicron than Delta
+- Lower WAIC and LOOIC than a lognormal generation-time model, for
+  both strains
+:::
+::: {.column width="60%"}
+![](figures/figure3_generation_mean_sd_lognormal_vs_updatedV_obspair.png){width="100%"}
+
+::: {.attribution}
+Framework: Jamieson et al. (working paper). Data:
+[Backer et al. 2022](https://doi.org/10.2807/1560-7917.ES.2022.27.6.2200042),
+[Park et al. 2023](https://doi.org/10.1073/pnas.2221887120)
+:::
+:::
+::::
+
+## SARS-CoV-2: fit to the serial intervals
+
+:::: {.columns}
+::: {.column width="40%"}
+- Both models reproduce the modal interval and the tails
+- For Omicron the within-host informed model captures the peak and
+  both tails better than the lognormal
+- The fit stays comparable while keeping a biological link to the
+  latent generation time
+:::
+::: {.column width="60%"}
+![](figures/figure_serial_fit_overlay_lognormal_vs_WHinformed_omicron_delta.png){width="100%"}
+
+::: {.attribution}
+Framework: Jamieson et al. (working paper)
+:::
+:::
+::::
+
+## Mpox: bringing in external viral-load information
+
+:::: {.columns}
+::: {.column width="40%"}
+- 34 high-confidence mpox transmission pairs
+- External viral-load data build informative priors on the trajectory
+  parameters $(\log r, \log d, m, \log\kappa)$
+- The decline $\log d$ and peak time $m$ shift under the viral-load
+  prior: external information constrains weakly identified parameters
+- A natural next step: **jointly fit** the transmission pairs and the
+  viral-load data, rather than passing one in as a prior
+:::
+::: {.column width="60%"}
+![](figures/WH_prior_posterior_comparison_logr_logd_logkappa_m.png){width="100%"}
+
+::: {.attribution}
+Framework: Jamieson et al. (working paper). Mpox pairs:
+[Miura et al. 2024](https://doi.org/10.1093/infdis/jiad091);
+viral load:
+[Yang et al. 2024](https://doi.org/10.1038/s41467-024-48754-8)
+:::
+:::
+::::
+
+# You don't need a within-host model
+
+## The hierarchy is agnostic to the hazard
+
+:::: {.columns}
+::: {.column width="40%"}
+- The event-time hierarchy holds for any hazard form; the within-host
+  $V(t)$ is one choice
+- A generic alternative: **contact-interval survival models** — time
+  from infectiousness onset to infectious contact is a transmission
+  hazard, with no within-host trajectory needed
+  ([Kenah 2011](https://doi.org/10.1093/biostatistics/kxq068))
+- This contact interval is exactly our $U$ (infectiousness onset to
+  transmission), so $GT = LP + U$ — now with $U$ from a generic hazard,
+  not $V(t)$
+
+::: {.callout-note}
+For an ordered pair $(i,j)$, the **contact interval** $\tau_{ij}$ is the
+time from $i$'s onset of infectiousness to the first infectious contact
+from $i$ to $j$ (one able to infect a susceptible) — right-censored if
+none occurs before $i$ is removed. Kenah models it through its hazard,
+$f(\tau)=\lambda(\tau)\,e^{-\int_0^\tau \lambda}$, with covariates as a
+Cox-type $\lambda(\tau\mid X)=\lambda_0(\tau)\,e^{\beta^\top X}$.
+:::
+:::
+::: {.column width="60%"}
+![](figures/fig-contact-interval.png){width="100%"}
+
+::: {.attribution}
+Diagram: this talk, after the contact-interval idea of
+[Kenah (2011)](https://doi.org/10.1093/biostatistics/kxq068)
+:::
+:::
+::::

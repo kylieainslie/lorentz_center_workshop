@@ -1,0 +1,74 @@
+# What is a serial interval?
+
+## Two delays: serial and generation interval
+
+:::: {.columns}
+::: {.column width="40%"}
+- **Serial interval (SI)**: time between *symptom onset* of infector
+  and infectee
+- **Generation interval (GI)**: time between *infections*
+- The SI can be **negative**: the infectee's symptoms can appear
+  before the infector's, for example with presymptomatic transmission
+- The GI is what *some* transmission models need; the SI is usually
+  what we get to observe
+:::
+::: {.column width="60%"}
+![](figures/fig-gt-vs-si-timeline.png){width="100%"}
+
+::: {.attribution}
+Source: within-host informed event-time framework (Jamieson et al.,
+working paper)
+:::
+:::
+::::
+
+## But we rarely observe this exactly
+
+:::: {.columns}
+::: {.column width="40%"}
+- Infection and transmission times are **latent** — we almost never
+  see them directly
+- Symptom onsets are recorded to a **day** at best, and "onset" is
+  itself imprecise: definitions vary, and recall is biased
+- So we never fully observe it — we come to how we currently handle
+  that next
+- Estimating a serial interval is really estimating a delay from
+  incomplete data
+:::
+::: {.column width="60%"}
+![](figures/fig-gt-vs-si-timeline-observed.png){width="100%"}
+
+::: {.attribution}
+Source: within-host informed event-time framework (Jamieson et al.,
+working paper)
+:::
+:::
+::::
+
+## Why do we want it?
+
+:::: {.columns}
+::: {.column width="52%"}
+- Feeds $R_t$ through the renewal equation, and links the growth
+  rate $r$ to the reproduction number $R$
+- Beyond renewal: used to **reconstruct infection times** from onsets
+  by deconvolution
+- Also feeds forecasting and contact tracing
+- But the SI is a **proxy** for the generation interval, the quantity
+  some transmission models need
+- And do we want the *measure* itself? The transmission-pair data are
+  what is valuable; the serial interval is just one summary of them
+:::
+::: {.column width="48%"}
+::: {.callout-note}
+Defined from the right reference cohort, the forward SI links $r$ to
+$R$ just as the GI does.
+:::
+
+::: {.attribution}
+[Park et al. (2021)](https://doi.org/10.1073/pnas.2011548118);
+[Lehtinen et al. (2021)](https://doi.org/10.1098/rsif.2020.0756);
+[Wallinga & Lipsitch (2007)](https://doi.org/10.1098/rspb.2006.3754)
+:::
+:::
+::::

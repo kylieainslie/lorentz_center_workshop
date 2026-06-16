@@ -48,8 +48,9 @@ where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups
 
 1. Merge relevant data sets 
 2. Artificially create a cohort
-3. Calculate $\bar{I}$
-3. Fit survival model
+3. Correct for reporting delay
+4. Calculate $\bar{I}$
+5. Fit survival model
 
 ## Results
 

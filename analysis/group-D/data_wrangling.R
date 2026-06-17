@@ -163,5 +163,13 @@ prevalence.data <- cases_daily %>%
     summarise(prevalence.daily = sum(n_cases)) %>%
     rename(day = value)
 
+prevalence.data.overall <- cases_daily %>%
+  rowwise() %>%
+  mutate(inf.days = list(enframe(seq(day-reporting.delay, day + (duration.infection - reporting.delay))))) %>%
+  select(-day) %>%
+  unnest(inf.days) %>%
+  group_by(vax_status, value) %>%
+  summarise(prevalence.daily = sum(n_cases)) %>%
+  rename(day = value)
 
 

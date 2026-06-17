@@ -1,0 +1,10 @@
+"model_name","anchor_year","formula","n_rows","n_individuals","n_events","all_coefficients_finite","all_confidence_limits_finite"
+"no_covariates",2019,"Surv(start, stop, event) ~ 1",255221,200000,29447,TRUE,TRUE
+"minimal",2019,"Surv(start, stop, event) ~ age_band + sex + vaccinated_td",255221,200000,29447,TRUE,TRUE
+"extended",2019,"Surv(start, stop, event) ~ age_band + sex + vaccinated_td + school_member +      worker",255221,200000,29447,TRUE,TRUE
+"no_covariates",2020,"Surv(start, stop, event) ~ 1",255221,200000,29447,TRUE,TRUE
+"minimal",2020,"Surv(start, stop, event) ~ age_band + sex + vaccinated_td",255221,200000,29447,TRUE,TRUE
+"extended",2020,"Surv(start, stop, event) ~ age_band + sex + vaccinated_td + school_member +      worker",255221,200000,29447,TRUE,TRUE
+"no_covariates",2023,"Surv(start, stop, event) ~ 1",255221,200000,29447,TRUE,TRUE
+"minimal",2023,"Surv(start, stop, event) ~ age_band + sex + vaccinated_td",255221,200000,29447,TRUE,TRUE
+"extended",2023,"Surv(start, stop, event) ~ age_band + sex + vaccinated_td + school_member +      worker",255221,200000,29447,TRUE,TRUE

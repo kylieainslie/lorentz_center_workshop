@@ -2,6 +2,8 @@ library(dplyr)
 library(tidyr)
 library(survival)
 library(purrr)
+require(ggplot2)
+require(tidyverse)
 
 # Load data
 demo <- readRDS("data/demographic_data.rds")

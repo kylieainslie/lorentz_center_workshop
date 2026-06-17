@@ -8,3 +8,7 @@
 
 **/*.quarto_ipynb
 .Rproj.user
+
+# group-D only: new .rds outputs shouldn't be auto-staged; already-tracked
+# .rds files (fit.rds, stan_data.rds, etc.) are unaffected and stay tracked.
+*.rds

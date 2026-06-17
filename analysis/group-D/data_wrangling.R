@@ -163,5 +163,23 @@ prevalence.data <- cases_daily %>%
     summarise(prevalence.daily = sum(n_cases)) %>%
     rename(day = value)
 
+prevalence.data.overall <- cases_daily %>%
+  rowwise() %>%
+  mutate(inf.days = list(enframe(seq(day-reporting.delay, day + (duration.infection - reporting.delay))))) %>%
+  select(-day) %>%
+  unnest(inf.days) %>%
+  group_by(value) %>%
+  summarise(prevalence.daily = sum(n_cases)) %>%
+  rename(day = value)
 
-
+cohort_tv_daily <- cohort_tv_daily |>
+  left_join(
+    prevalence.data.overall,
+    by = c("tstart" = "day")
+  ) |>
+  rename(I = prevalence.daily) |>
+  left_join(
+    prevalence.data |> pivot_wider(names_from = age_group, values_from = prevalence.daily),
+    by = c("vax_status", "tstart" = "day")
+  )
+names(cohort_tv_daily)[12:16] <- paste("Ia", 1:5, sep="")

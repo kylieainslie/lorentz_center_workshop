@@ -144,3 +144,21 @@ cohort_tv_daily <- cohort_tv |>
 glimpse(cohort_tv_daily)
 cat("\nRows:", nrow(cohort_tv_daily), "\n")
 cat("Missing incidence_rate:", sum(is.na(cohort_tv_daily$incidence_rate)), "\n")
+
+
+# Calculating the prevalence (number of infections per day by vax and age) with initialy assumptions regarding
+# the duration of infection and reporting delay -- to be updated once these characteristics are estimated
+duration.infection <- 7
+reporting.delay <- 2
+
+prevalence.data <- cases_daily %>%
+    rowwise() %>%
+    mutate(inf.days = list(enframe(seq(day-reporting.delay, day + (duration.infection - reporting.delay))))) %>%
+    select(-day) %>%
+    unnest(inf.days) %>%
+    group_by(age_group, vax_status, value) %>%
+    summarise(prevalence.daily = sum(n_cases)) %>%
+    rename(day = value)
+
+
+

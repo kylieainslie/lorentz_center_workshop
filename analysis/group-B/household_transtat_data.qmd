@@ -1,0 +1,332 @@
+---
+title: "Household transtat data construction"
+format:
+  html:
+    code-fold: true
+    code-summary: "show code"
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+---
+
+## Purpose
+
+This file creates the household pair data, which will be used for donwnstream 
+analyses with `transtat`. It is intentionally limited to data construction 
+so that the generated CSV can be pushed together with this qmd.
+
+The output is located at:
+
+```{r}
+output_csv <- here::here("analysis/group-B/household_transtat_data.csv")
+tibble::tibble(output = output_csv) |>
+  knitr::kable()
+```
+
+## Assumptions
+
+```{r}
+library(dplyr)
+library(readr)
+
+observation_end <- 40
+assumed_infectious_duration <- 14
+
+tibble::tribble(
+  ~quantity, ~value, ~meaning,
+  "`observation_end`", as.character(observation_end), "end of observed follow-up",
+  "`assumed_infectious_duration`", as.character(assumed_infectious_duration), "days after symptom onset during which a household member is treated as a possible source",
+  "`infectious_onset`", "symptom onset", "used as the source time origin because infection times are not observed for all household members"
+) |>
+  knitr::kable()
+```
+
+## Input data
+
+```{r}
+ct <- readRDS(here::here("data/contact_tracing_data.rds"))
+dem <- readRDS(here::here("data/demographic_data.rds"))
+inc40 <- readRDS(here::here("data/incidence_data_day40.rds"))
+
+tibble::tribble(
+  ~object, ~role,
+  "`contact_tracing_data.rds`", "traced pairs, pair-specific symptom onsets, and contact-time windows",
+  "`demographic_data.rds`", "household membership and individual covariates",
+  "`incidence_data_day40.rds`", "observed symptom-onset times up to day 40"
+) |>
+  knitr::kable()
+```
+
+## Person-level onset data
+
+For each person, symptom onset is the earliest non-missing onset found in either
+the incidence data or the contact-tracing data. People without an onset by day
+40 are treated as not observed infected.
+
+```{r}
+onsets <- bind_rows(
+  inc40 |>
+    transmute(person_id = ind_id, symptom_onset = time_of_symptom_onset),
+  ct |>
+    transmute(person_id = ind_id, symptom_onset = ind_symptom_onset),
+  ct |>
+    transmute(person_id = reported_contact, symptom_onset = reported_contact_symptom_onset)
+) |>
+  filter(!is.na(symptom_onset)) |>
+  group_by(person_id) |>
+  summarise(symptom_onset = min(symptom_onset), .groups = "drop")
+
+people <- dem |>
+  transmute(
+    person_id = ind_id,
+    hh_id,
+    age,
+    sex,
+    classroom_id,
+    workplace_id
+  ) |>
+  left_join(onsets, by = "person_id") |>
+  mutate(
+    infected_observed = !is.na(symptom_onset),
+    infectious_onset = symptom_onset,
+    infectious_end = symptom_onset + assumed_infectious_duration
+  )
+
+people |>
+  summarise(
+    people = n(),
+    observed_infected = sum(infected_observed),
+    observed_uninfected = sum(!infected_observed)
+  ) |>
+  knitr::kable()
+```
+
+## Household subset
+
+The subset is restricted to households that contain at least one contact-tracing
+pair where `reported_contact` and `ind_id` share the same household. Here, the 
+direction of transmission is determined by the order of symptom onsets (for the 
+sake of simplicity). 
+
+```{r}
+household_contact_pairs <- ct |>
+  transmute(
+    infector_id = reported_contact,
+    infectee_id = ind_id,
+    infector_symptom_onset = reported_contact_symptom_onset,
+    infectee_symptom_onset = ind_symptom_onset,
+    contact_lower = time_of_contact_lower,
+    contact_upper = time_of_contact_upper,
+    contact_mid = (time_of_contact_lower + time_of_contact_upper) / 2
+  ) |>
+  left_join(
+    people |> select(infector_id = person_id, infector_hh_id = hh_id),
+    by = "infector_id"
+  ) |>
+  left_join(
+    people |> select(infectee_id = person_id, infectee_hh_id = hh_id),
+    by = "infectee_id"
+  ) |>
+  mutate(same_household = infector_hh_id == infectee_hh_id) |>
+  filter(same_household)
+
+household_members <- people |>
+  filter(hh_id %in% household_contact_pairs$infector_hh_id)
+
+household_summary <- household_members |>
+  group_by(hh_id) |>
+  summarise(
+    household_size = n(),
+    n_observed_infected = sum(infected_observed),
+    n_observed_uninfected = sum(!infected_observed),
+    n_household_contact_pairs = sum(household_contact_pairs$infector_hh_id == first(hh_id)),
+    .groups = "drop"
+  )
+
+household_summary |>
+  summarise(
+    households = n(),
+    members = sum(household_size),
+    observed_infected = sum(n_observed_infected),
+    observed_uninfected = sum(n_observed_uninfected)
+  ) |>
+  knitr::kable()
+```
+
+## transtat rows
+
+For each selected household, the data contain:
+
+- internal ordered rows `i -> j` for each observed infected household member
+  `i` and each other household member `j`;
+- one external-source row `0 -> j` for each household member `j`.
+
+For internal rows, `Surv(start, stop, event)` is on the onset-to-onset time
+scale. `event = 1` means that the row is a possible source for the susceptible's
+observed event, not that the true infector is known.
+
+```{r}
+infectors <- household_members |>
+  filter(infected_observed) |>
+  select(
+    hh_id,
+    infector = person_id,
+    infector_age = age,
+    infector_sex = sex,
+    infector_onset = infectious_onset,
+    infector_end = infectious_end
+  )
+
+susceptibles <- household_members |>
+  select(
+    hh_id,
+    sus = person_id,
+    sus_age = age,
+    sus_sex = sex,
+    sus_onset = symptom_onset,
+    sus_infected_observed = infected_observed
+  )
+
+internal_rows <- inner_join(
+  infectors,
+  susceptibles,
+  by = "hh_id",
+  relationship = "many-to-many"
+) |>
+  filter(infector != sus) |>
+  mutate(
+    stop_calendar = if_else(sus_infected_observed, sus_onset, observation_end),
+    start = 0,
+    stop = pmax(0, pmin(stop_calendar - infector_onset, assumed_infectious_duration)),
+    event = as.integer(
+      sus_infected_observed &
+        infector_onset < sus_onset &
+        infector_end >= sus_onset
+    ),
+    external = 0L,
+    pair_type = "household_internal",
+    same_household = TRUE,
+    observed_ct_household_pair = paste(infector, sus) %in%
+      paste(household_contact_pairs$infector_id, household_contact_pairs$infectee_id)
+  ) |>
+  filter(stop > start) |>
+  select(
+    hh_id,
+    sus,
+    infector,
+    start,
+    stop,
+    event,
+    external,
+    pair_type,
+    same_household,
+    observed_ct_household_pair,
+    sus_infected_observed,
+    sus_onset,
+    infector_onset,
+    infector_end,
+    sus_age,
+    sus_sex,
+    infector_age,
+    infector_sex
+  )
+
+external_rows <- susceptibles |>
+  mutate(
+    infector = "external",
+    start = 0,
+    stop = if_else(sus_infected_observed, sus_onset, observation_end),
+    event = as.integer(sus_infected_observed),
+    external = 1L,
+    pair_type = "external",
+    same_household = FALSE,
+    observed_ct_household_pair = FALSE,
+    infector_onset = NA_real_,
+    infector_end = NA_real_,
+    infector_age = NA_integer_,
+    infector_sex = NA_character_
+  ) |>
+  filter(stop > start) |>
+  select(
+    hh_id,
+    sus,
+    infector,
+    start,
+    stop,
+    event,
+    external,
+    pair_type,
+    same_household,
+    observed_ct_household_pair,
+    sus_infected_observed,
+    sus_onset,
+    infector_onset,
+    infector_end,
+    sus_age,
+    sus_sex,
+    infector_age,
+    infector_sex
+  )
+
+household_transtat_data <- bind_rows(internal_rows, external_rows) |>
+  arrange(hh_id, sus, external, infector) |>
+  mutate(row_id = row_number(), .before = 1)
+
+household_transtat_data |>
+  count(pair_type, event) |>
+  knitr::kable()
+```
+
+## Write CSV
+
+```{r}
+write_csv(household_transtat_data, output_csv)
+
+tibble::tibble(
+  file = output_csv,
+  rows = nrow(household_transtat_data),
+  columns = ncol(household_transtat_data)
+) |>
+  knitr::kable()
+```
+
+## Data items
+
+The CSV contains one row per possible source-to-susceptible pair. Internal rows
+represent possible household transmission; external rows represent possible
+infection from outside the observed household.
+
+```{r}
+data_item_descriptions <- tibble::tribble(
+  ~column, ~description,
+  "row_id", "unique row identifier in the constructed CSV",
+  "hh_id", "household ID",
+  "sus", "susceptible / recipient individual ID for this row",
+  "infector", "possible source individual ID, or `external` for the outside-household source",
+  "start", "start of the risk interval used in `Surv(start, stop, event)`; currently 0 for all rows",
+  "stop", "end of the risk interval; for internal rows this is truncated at 14 days after source onset",
+  "event", "1 if this row is a possible source for an observed infection event; 0 if censored",
+  "external", "1 for external-source rows; 0 for household-internal rows",
+  "pair_type", "`household_internal` or `external`",
+  "same_household", "TRUE for internal household rows; FALSE for external rows",
+  "observed_ct_household_pair", "TRUE if the ordered internal pair also appears as a same-household contact-tracing pair",
+  "sus_infected_observed", "TRUE if the susceptible had an observed symptom onset by day 40",
+  "sus_onset", "observed symptom onset time for the susceptible, if any",
+  "infector_onset", "observed symptom onset time for the possible household source; missing for external rows",
+  "infector_end", "assumed end of infectiousness for the possible household source; `infector_onset + 14`",
+  "sus_age", "age of the susceptible",
+  "sus_sex", "sex of the susceptible",
+  "infector_age", "age of the possible household source; missing for external rows",
+  "infector_sex", "sex of the possible household source; missing for external rows"
+)
+
+data_item_types <- tibble::tibble(
+  column = names(household_transtat_data),
+  type = vapply(household_transtat_data, \(x) paste(class(x), collapse = ", "), character(1))
+)
+
+data_item_types |>
+  left_join(data_item_descriptions, by = "column") |>
+  knitr::kable()
+```

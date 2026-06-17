@@ -1,0 +1,5 @@
+"profile","cumulative_excess_mortality","net_survival","overall_survival"
+"School-aged child, never vaccinated",0.070631800364746,0.929316626322722,0.929286855466869
+"Working-age adult, never vaccinated",0.0791812708447398,0.920753475096836,0.920353891890811
+"Older adult, never vaccinated",0.480426420683708,0.51640339508326,0.513633468286686
+"Older adult, vaccinated at day 45",0.307165103278951,0.691024889019713,0.687318313161732

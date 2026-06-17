@@ -1,0 +1,7 @@
+"check","value","passed"
+"Unique individuals",2e+05,TRUE
+"Deaths preserved",29447,TRUE
+"Vaccinations preserved",55221,TRUE
+"Non-negative follow-up",1,TRUE
+"Positive split intervals",1,TRUE
+"At most one event per individual",1,TRUE

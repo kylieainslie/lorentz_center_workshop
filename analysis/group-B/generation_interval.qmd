@@ -80,19 +80,63 @@ purrr::imap_dfr(draws, \(d, nm) tibble::tibble(
   knitr::kable()
 ```
 
+The backward interval is about 3 days; undoing the tilt moves it to about 5. `r`
+is tight enough (above) that propagating its uncertainty barely changes the
+forward CI, so the band is the fit uncertainty at the point `r`, and most of the
+width is the 68 pairs.
+
+## Joint Bayesian model with forward correction
+
+The growth-weighting above removes the backward bias indirectly through the
+growth rate. A better option is to remove it directly. We fit a joint BAyesian model over three
+streams of the same data: the incubation period from every traced infectee, the
+chain generation intervals where both infection windows are known, and the onset
+generation intervals where only the infector's onset is known and its incubation
+is integrated out. It right-truncates each pair at the tracing cutoff. The generation interval and the incubation period are
+both estimated as parametric gamma distributions, and the mean and uncertainty of each is the parameter reported below. The code is in
+`analysis/joint_model/joint.jl`.
+
+Sampling takes about 25 minutes on a Macbook, so it runs separately and writes the draws to
+CSV, which we read here.
+
+```{r}
+jdraws <- read.csv(here::here("analysis", "joint_model", "joint_gi_draws.csv"))
+
+fmt <- \(x) sprintf("%.2f (%.2f, %.2f)", median(x), quantile(x, .025), quantile(x, .975))
+tibble::tibble(
+  estimand      = c("generation interval", "incubation period"),
+  `mean (days)` = c(fmt(jdraws$mu_g), fmt(jdraws$mu_i)),
+  `sd (days)`   = c(fmt(jdraws$mu_g / sqrt(jdraws$k_g)),
+                    fmt(jdraws$mu_i / sqrt(jdraws$k_i)))) |>
+  knitr::kable()
+```
+
+All three generation-interval estimates on one set of axes, over the observed
+backward delays (grey): the backward fit, the growth-weighted forward fit, and the
+joint model's forward-corrected fit.
+
 ```{r}
 #| fig-width: 6
 #| fig-height: 3.5
-# density with a 95% band per estimand (gamma recovered from the mean/sd draws)
+# all three GI densities with a 95% band each (gamma recovered from each fit's draws)
 grid <- seq(0, 14, 0.1)
-band <- purrr::imap_dfr(draws, function(d, est) {
-  i  <- sample(length(d$mean), 600)
-  sh <- (d$mean[i] / d$sd[i])^2; rt <- d$mean[i] / d$sd[i]^2
-  dn <- vapply(seq_along(i), \(j) dgamma(grid, sh[j], rt[j]), numeric(length(grid)))
+band <- function(sh, rt, est) {
+  dn <- vapply(seq_along(sh), \(j) dgamma(grid, sh[j], rt[j]), numeric(length(grid)))
   tibble::tibble(t = grid, estimand = est, med = apply(dn, 1, median),
                  lo = apply(dn, 1, quantile, .025), hi = apply(dn, 1, quantile, .975))
-})
-ggplot(band, aes(t, med, colour = estimand, fill = estimand)) +
+}
+# backward and growth-weighted fits (R, mean/sd draws); joint model (gamma params)
+bands <- dplyr::bind_rows(
+  purrr::imap_dfr(draws, \(d, est) {
+    i <- sample(length(d$mean), 600)
+    band((d$mean[i] / d$sd[i])^2, d$mean[i] / d$sd[i]^2, est)
+  }),
+  band(jdraws$k_g, jdraws$k_g / jdraws$mu_g, "forward (joint model)")
+)
+bands$estimand <- factor(bands$estimand,
+  levels = c("backward (observed)", "forward (growth-weighted)", "forward (joint model)"))
+
+ggplot(bands, aes(t, med, colour = estimand, fill = estimand)) +
   geom_histogram(data = tibble::tibble(d = gi$tau_mid), aes(d, after_stat(density)),
                  inherit.aes = FALSE, binwidth = 1, fill = "grey88", colour = "white") +
   geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.15, colour = NA) +
@@ -100,8 +144,3 @@ ggplot(band, aes(t, med, colour = estimand, fill = estimand)) +
   labs(x = "generation interval (days)", y = "density", colour = NULL, fill = NULL) +
   theme_minimal() + theme(legend.position = "bottom")
 ```
-
-The backward interval is about 3 days; undoing the tilt moves it to about 5. `r`
-is tight enough (above) that propagating its uncertainty barely changes the
-forward CI, so the band is the fit uncertainty at the point `r`, and most of the
-width is the 68 pairs.

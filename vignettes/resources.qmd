@@ -41,6 +41,12 @@ This page is maintained collectively by participants. To add a resource, edit th
 |---------|-------|---------|------|
 | Sharker et al. | Pairwise accelerated failure time regression models for infectious disease transmission in close-contact groups with external sources of infection | *arXiv* (2019) | [DOI](https://doi.org/10.48550/arXiv.1901.04916) |
 
+### Ten Simple Rules
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| Palagi, Schwartz, Markel & Ouellette | Ten simple rules for writing a PLOS Computational Biology quick tips article | *PLOS Computational Biology* (2023) | [Article](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011689) |
+
 ---
 
 ## Software

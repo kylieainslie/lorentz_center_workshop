@@ -13,13 +13,13 @@
 data {
   int<lower=1> N;                   // number of aggregated cells
   int<lower=1> K;                   // number of age groups
-  int<lower=1> T_vax;               // number of time-since-vax bins (weeks)
+  int<lower=1> T_vax;               // number of time-since-vax bins (days)
 
   array[N] int<lower=0> Y;          // event count per cell
   vector[N] log_Ibar;               // pre-computed log force-of-infection offset
   vector[N] log_persdays;           // log(person-days at risk) per cell
   array[N] int<lower=0,upper=1> vax;          // vaccination indicator (0/1)
-  array[N] int<lower=1,upper=T_vax> tvax_bin; // weekly bin since vax (1 = unvax/bin 1)
+  array[N] int<lower=1,upper=T_vax> tvax_bin; // day since vax (bin 1 = unvax, bin t+1 = day t)
 }
 
 parameters {

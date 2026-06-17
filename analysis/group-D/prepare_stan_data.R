@@ -74,9 +74,7 @@ foi_long <- map_dfr(seq_len(study_end), function(tc) {
 })
 
 # ---- Aggregate person-days for Stan --------------------------------------
-# Weekly bins for time since vaccination (1 = unvax or week 0, etc.)
-# Bin 1 = unvaccinated; bins 2..T_vax = weeks 1, 2, ..., 12+
-
+# Daily bins for time since vaccination.
 # Bin 1 = unvaccinated; bins 2..(study_end+1) = day 1..study_end since vaccination
 T_vax <- study_end + 1L   # bin 1 reserved for unvaccinated
 
@@ -94,7 +92,8 @@ stan_input_raw <- cohort_tv_daily |>
       pmin(time_since_vax, study_end) + 1L
     )
   ) |>
-  left_join(foi_long, by = c("day" = "day", "age_group" = "age_group"))
+  left_join(foi_long, by = c("tstop" = "day", "age_group" = "age_group")) %>%
+  mutate(day = tstop)
 
 # Aggregate to cells
 stan_cells <- stan_input_raw |>
@@ -122,10 +121,48 @@ stan_data <- list(
   tvax_bin    = as.integer(stan_cells$tvax_day)
 )
 
-# Save for use in run_model.R
-saveRDS(stan_data,   "analysis/group-D/stan_data.rds")
-saveRDS(stan_cells,  "analysis/group-D/stan_cells.rds")  # for post-processing
-saveRDS(C_mat,       "analysis/group-D/contact_matrix_NL.rds")
+# ---- No-age-structure FoI ------------------------------------------------
+# Simple alternative: overall effective prevalence / total population,
+# the same for every age group on a given day.
+N_total <- nrow(df_aged)
 
-cat("Saved stan_data.rds, stan_cells.rds, contact_matrix_NL.rds\n")
+foi_simple <- prev_wide |>
+  group_by(day) |>
+  summarise(I_eff_total = sum(I_eff), .groups = "drop") |>
+  mutate(
+    day_lag  = day + 1L,   # attach lagged prevalence to the following calendar day
+    Ibar_simple = pmax(I_eff_total / N_total, 1e-10)
+  ) |>
+  select(day = day_lag, Ibar_simple)
+
+stan_cells_simple <- stan_input_raw |>
+  left_join(foi_simple, by = c("day" = "day")) |>
+  group_by(age_group, vax_status, day, tvax_day) |>
+  summarise(
+    Y            = sum(event),
+    n_persdays   = n(),
+    Ibar_simple  = first(Ibar_simple),
+    .groups      = "drop"
+  ) |>
+  filter(!is.na(Ibar_simple))
+
+stan_data_simple <- list(
+  N            = nrow(stan_cells_simple),
+  K            = K,
+  T_vax        = T_vax,
+  Y            = as.integer(stan_cells_simple$Y),
+  log_Ibar     = log(stan_cells_simple$Ibar_simple),
+  log_persdays = log(stan_cells_simple$n_persdays),
+  vax          = as.integer(stan_cells_simple$vax_status),
+  tvax_bin     = as.integer(stan_cells_simple$tvax_day)
+)
+
+# ---- Save for use in run_model.R -----------------------------------------
+saveRDS(stan_data,          "analysis/group-D/stan_data.rds")
+saveRDS(stan_cells,         "analysis/group-D/stan_cells.rds")
+saveRDS(stan_data_simple,   "analysis/group-D/stan_data_simple.rds")
+saveRDS(stan_cells_simple,  "analysis/group-D/stan_cells_simple.rds")
+saveRDS(C_mat,              "analysis/group-D/contact_matrix_NL.rds")
+
+cat("Saved stan_data.rds (age-structured) and stan_data_simple.rds (no age structure)\n")
 cat("T_vax bins:", T_vax, "(bin 1 = unvaccinated, bins 2-", T_vax, "= days 1-", study_end, "since vaccination)\n")

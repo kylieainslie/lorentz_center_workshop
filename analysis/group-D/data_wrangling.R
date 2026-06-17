@@ -141,7 +141,7 @@ cohort_tv_daily <- cohort_tv |>
     incidence_weighted |> select(day, age_group, vax_status, incidence_rate),
     by = c("day", "age_group", "vax_status")
   ) |>
-  select(ind_id, age, sex, age_group, tstart, tstop, event, vax_status, incidence_rate) %>%
+  select(ind_id, age, sex, age_group, day, tstart, tstop, event, vax_status, incidence_rate) %>%
   left_join(., cohort_base %>% select(ind_id, time_of_vaccination), by = "ind_id")
 
 glimpse(cohort_tv_daily)

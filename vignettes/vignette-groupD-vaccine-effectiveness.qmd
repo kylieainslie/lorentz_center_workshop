@@ -46,7 +46,7 @@ where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups
 
 ## Analysis
 
-1. Merge relevant data sets 
+1. Merge relevant data sets
 2. Artificially create a cohort
 3. Correct for reporting delay
 4. Calculate $\bar{I}$
@@ -60,11 +60,34 @@ where $a'$ indexes age groups, and $a$ indexes subgroups within those age groups
 
 ### Assumptions
 - Assumption 1: no differential under reporting by vac status or over time
-- Assumption 2: 
+- Assumption 2:
+
+### Implementation
+
+Steps 1-4 are implemented in [`data_wrangling.R`](../analysis/group-D/data_wrangling.R) and [`prepare_stan_data.R`](../analysis/group-D/prepare_stan_data.R), which build the time-varying cohort, compute $\bar{I}(t_c)$ from background incidence and a POLYMOD contact matrix, and aggregate person-days into cells by age group, vaccination status, calendar day, and days-since-vaccination.
+
+For step 5 we use a **Poisson approximation to Cox PH**: aggregated event counts $Y$ per cell are modelled as
+$$Y \sim \text{Poisson}\big(\exp(\log\beta + \log\bar{I}(t_c) + \log(\text{person-days}) + \gamma(t)\cdot\text{vax})\big),$$
+fit in Stan ([`model.stan`](../analysis/group-D/model.stan)). $\gamma(t)$ is given a random-walk prior so its shape is estimated rather than assumed; $\text{VE}(t) = 1-\exp(\gamma(t))$.
+
+### Simulation-based validation
+
+[`simulate_validate.R`](../analysis/group-D/simulate_validate.R) checks parameter recovery: it simulates $Y$ under a known $\log\beta$ and a known rise-then-wane $\gamma(t)$, using the real covariate structure, then refits the model and compares.
+
+![Simulated vs. recovered $\gamma(t)$](../analysis/group-D/simulate_validate_recovery.png)
 
 ## Results
 
+- $\log\beta$ recovers accurately (e.g. true $-4.4$ vs. posterior median $-4.40$).
+- $\gamma(t)$ recovers well for roughly the first two weeks since vaccination, then flattens instead of tracking the true waning, with rapidly widening uncertainty. This tracks event sparsity in the vaccinated arm (events drop to near zero by day ~13-20 despite ample person-time remaining), not a model or sampling failure — confirmed after fixing earlier sampler diagnostic issues via a non-centered parameterization ([`model_noncentered.stan`](../analysis/group-D/model_noncentered.stan)).
+- In the real-data fit, VE rises to ~88% by day 15 then appears to plateau around 70-72% from day 45-90. Given the above, this late plateau is likely prior-driven rather than a genuine finding. There is also an early dip to about -22% around day 2-3, plausibly a reporting-delay artifact.
+
+![Estimated VE over time since vaccination (real data)](../analysis/group-D/ve_over_time.png)
+
 ## Discussion and Limitations
+
+- VE estimates should only be trusted out to roughly where vaccinated-arm events still occur (~2-3 weeks since vaccination here); later time points are prior- not data-driven.
+- The early dip near day 0-3 may reflect reporting-delay contamination; correcting for reporting delay (step 3) remains to be implemented.
 
 ## Session Info
 

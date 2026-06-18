@@ -29,7 +29,7 @@ extract_ve <- function(fit, label) {
 mcmc_args <- list(
   chains          = 4,
   parallel_chains = 4,
-  iter_warmup     = 500,
+  iter_warmup     = 100,
   iter_sampling   = 1000,
   refresh         = 200,
   adapt_delta     = 0.95

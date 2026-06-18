@@ -14,7 +14,7 @@ source("analysis/group-D/data_wrangling.R")
 #   df_aged          - full population with age_group
 
 # ---- Parameters (assumptions) --------------------------------------------
-theta        <- 0.5   # relative reduction in infectiousness for vaccinated
+theta        <- 1   # relative reduction in infectiousness for vaccinated
 study_end    <- 90L
 age_breaks   <- c(0, 5, 18, 50, 65, Inf)
 age_labels   <- c("0-4", "5-17", "18-49", "50-64", "65+")

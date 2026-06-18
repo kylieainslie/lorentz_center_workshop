@@ -24,7 +24,7 @@ Time-varying VE is routinely estimated from observational data using Cox proport
 2. **Differential depletion of susceptibles**: vaccinated individuals who remain uninfected are a selected group; the same is true of unvaccinated individuals but the selection forces differ.
 3. **Temporal and structural variation in the force of infection**: the infectious pressure to which individuals are exposed varies both over calendar time (epidemic waves) and across age groups (heterogeneous contact patterns).
 
-The standard Cox baseline hazard absorbs the population-average FoI through calendar time, but it cannot distinguish *who* was exposed to *how much* infectious pressure — particularly when exposure is structured by age and by the vaccination status of contacts. By modelling the FoI explicitly and incorporating it as an offset, we attempt to separate these confounded signals.
+A standard Cox model can adjust for age as a proportional covariate, but the proportional hazards assumption fixes the *ratio* of hazards between age groups as constant over calendar time. In reality, the infectious pressure experienced by each age group changes dynamically as the epidemic evolves and as the age distribution of infectious individuals shifts. A child's excess hazard relative to an elderly adult is not constant — it depends on who is currently infectious and how much contact each group has with them. By modelling the FoI explicitly as a time-varying, age-structured offset (rather than a fixed age coefficient), we allow the age-specific baseline hazard to track the epidemic in real time. This also means that the remaining vaccine coefficient $\gamma(t)$ is estimated after accounting for differential exposure, not just differential baseline risk.
 
 ### Literature
 

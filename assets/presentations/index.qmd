@@ -1,0 +1,16 @@
+---
+title: "Presentations"
+subtitle: "Slides from talks and keynotes given during the workshop"
+---
+
+All slide decks in one place. These are also linked from the relevant [Materials](../../day1.qmd) pages for each day.
+
+| Day | Talk | Speaker | Link |
+|-----|------|---------|------|
+| Day 1 | Introduction to Survival Analysis | | [Slides](Survival%20analysis.pdf){target="_blank"} |
+| Day 1 | Introduction to Infectious Disease Modeling | Kylie Ainslie | [Slides](intro_idm_for_survival.html){target="_blank"} |
+| Day 2 | Keynote: How to serial interval | Sam Abbott (LSHTM) | [Slides](how-to-serial-interval.html){target="_blank"} · [Git repo](https://github.com/seabbs/how-to-serial-interval){target="_blank"} |
+
+::: {.callout-note}
+More slides will be added here as the workshop progresses.
+:::

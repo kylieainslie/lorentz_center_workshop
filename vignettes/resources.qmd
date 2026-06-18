@@ -11,6 +11,12 @@ This page is maintained collectively by participants. To add a resource, edit th
 
 ## Papers
 
+### Seminal Papers
+
+| Authors | Title | Journal | Link |
+|---------|-------|---------|------|
+| Keiding | Age-Specific Incidence and Prevalence: A Statistical Perspective | *Journal of the Royal Statistical Society, Series A* (1991) | [DOI](https://doi.org/10.2307/2983150) |
+
 ### Survival Analysis
 
 | Authors | Title | Journal | Link |
@@ -27,13 +33,15 @@ This page is maintained collectively by participants. To add a resource, edit th
 | Lipsitch | Challenges of vaccine effectiveness and waning studies | *Clinical Infectious Diseases* (2019) | [PDF](../assets/literature/Infectious%20diseases/Lipsitch%202019.pdf) |
 | Cori et al. | A new framework and software to estimate time-varying reproduction numbers | *American Journal of Epidemiology* (2013) | |
 | Wallinga & Lipsitch | How generation intervals shape the relationship between growth rates and reproductive numbers | *Proc. R. Soc. B* (2007) | |
+| Farrington, Kanaan & Gay | Estimation of the basic reproduction number for infectious diseases from age-stratified serological survey data | *Journal of the Royal Statistical Society, Series C* (2001) | [DOI](https://doi.org/10.1111/1467-9876.00233) |
 
 ### Dynamic Survival Analysis
 
 | Authors | Title | Journal | Link |
 |---------|-------|---------|------|
 | KhudaBukhsh et al. | Survival dynamical systems: individual-level survival analysis from population-level epidemic models | *Interface Focus* (2019) | [DOI](https://doi.org/10.1098/rsfs.2019.0048) |
-| di Lauro et al. | Dynamic survival analysis for non-Markovian epidemic models | *arXiv* (2022) | [DOI](https://doi.org/10.48550/arXiv.2202.09948) |
+| di Lauro et al. | Dynamic survival analysis for non-Markovian epidemic models | *Journal of the Royal Society Interface* (2022) | [DOI](https://doi.org/10.1098/rsif.2022.0124) |
+| Kenah | Contact intervals, survival analysis of epidemic data, and estimation of R0 | *Biostatistics* (2011) | [DOI](https://doi.org/10.1093/biostatistics/kxq068) |
 
 ### Pairwise Survival
 

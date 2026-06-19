@@ -8,7 +8,7 @@ date: today
 
 ## Project Aim
 
-In this project, we aim to improve the statistical efficiency of vaccine effectiveness (VE) estimation by leveraging data on the estimated force of infection experienced by different subpopulations.
+In this project, we aim to improve the statistical efficiency of vaccine effectiveness (VE) estimation by incorporating data on the force of infection experienced by different subpopulations.
 
 Consider age subpopulations $a = 1,\dots,A$. In mechanistic models, the force of infection experienced by subpopulation $a$ is a weighted sum of contact rates and the number currently infectious:
 

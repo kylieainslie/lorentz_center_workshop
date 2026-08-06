@@ -36,18 +36,14 @@ website:
           - text: "Day 5: Consolidation & Future Directions"
             href: day5.qmd
           - text: "---"
+          - text: "Presentations"
+            href: assets/presentations/index.qmd
           - text: "Vignettes"
             href: vignettes/index.qmd
           - text: "Resources"
             href: vignettes/resources.qmd
       - text: "Contribute"
-        menu:
-          - text: "Group Analysis Scripts"
-            href: analysis/index.qmd
-          - text: "Vignettes"
-            href: vignettes/index.qmd
-          - text: "Resources"
-            href: vignettes/resources.qmd
+        href: analysis/index.qmd
       - text: "Organizers"
         href: organizers.qmd
     right:

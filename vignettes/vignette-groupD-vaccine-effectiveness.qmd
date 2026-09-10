@@ -49,7 +49,7 @@ $$h_0(t_c, a) = \beta\,\bar{I}(t_c, a)$$
 
 where $\beta$ is a scalar transmission parameter and $\bar{I}(t_c, a)$ is the age-specific effective infectious pressure at calendar time $t_c$:
 
-$$\bar{I}(t_c, a) = \sum_{a'} \frac{C_{a'a}}{N_a}\Bigl[I_u^{a'}(t_c - 1) + (1-\theta)\,I_v^{a'}(t_c - 1)\Bigr]$$
+$$\bar{I}(t_c, a) = \sum_{a'}\Bigl[I_u^{a'}(t_c - 1) \frac{C_{a'a}^u}{N_a} + (1-\theta)\,I_v^{a'}(t_c - 1)\frac{C_{a'a}^v}{N_a}\Bigr]$$
 
 Here $I_u^{a'}$ and $I_v^{a'}$ are the counts of unvaccinated and vaccinated infectious individuals in age group $a'$, $C_{a'a}$ is the POLYMOD contact rate from group $a'$ to group $a$, $N_a$ is the population of group $a$, and $\theta \in [0,1]$ is the assumed reduction in infectiousness among vaccinated individuals (a fixed assumption; see below). The one-day lag reflects that today's hazard depends on yesterday's prevalence.
 
